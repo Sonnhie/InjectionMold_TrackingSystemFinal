@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{129E60CE-D736-4861-9BF5-699487E7D6CD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>InjectionMold_TrackingSystem</RootNamespace>
+    <AssemblyName>InjectionMold_TrackingSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdvancedDataGridView, Version=1.2.29921.15, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DG.AdvancedDataGridView.1.2.29921.15\lib\net40\AdvancedDataGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="CircularProgressBar, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CircularProgressBar.2.2.0.0\lib\net35-Client\CircularProgressBar.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=7.5.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.7.5.1\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=7.5.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.7.5.0\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=7.5.0.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.System.Drawing.7.5.0\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.9.0.0\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.0\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.0\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WinFormAnimation, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinFormAnimation.1.3.0.0\lib\net35-Client\WinFormAnimation.dll</HintPath>
+    </Reference>
+    <Reference Include="Zen.Barcode.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b5ae55aa76d2d9de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zen.Barcode.Rendering.Framework.3.1.10729.1\lib\Zen.Barcode.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdministratorForms\AdminDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministratorForms\AdminDashboard.Designer.cs">
+      <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorForms\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministratorForms\ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorForms\UpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministratorForms\UpdateUser.Designer.cs">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlAddLocation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlAddLocation.Designer.cs">
+      <DependentUpon>UserControlAddLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlAddUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlAddUser.Designer.cs">
+      <DependentUpon>UserControlAddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlDashboard.Designer.cs">
+      <DependentUpon>UserControlDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlMoldLocation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlMoldLocation.Designer.cs">
+      <DependentUpon>UserControlMoldLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlMoldMasterList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlMoldMasterList.Designer.cs">
+      <DependentUpon>UserControlMoldMasterList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlTransactionManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlTransactionManagement.Designer.cs">
+      <DependentUpon>UserControlTransactionManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlUpdateMoldData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlUpdateMoldData.Designer.cs">
+      <DependentUpon>UserControlUpdateMoldData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlUserManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdministratorForms\UserControlUserManagement.Designer.cs">
+      <DependentUpon>UserControlUserManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MoldTrackingSystemDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MoldTrackingSystemDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MoldTrackingSystemDataSet1.cs">
+      <DependentUpon>MoldTrackingSystemDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MoldTrackingSystemDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MoldTrackingSystemDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MoldTrackingSystemDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MoldTrackingSystemDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MoldTrackingSystemDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MoldTrackingSystemDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Splashscreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splashscreen.Designer.cs">
+      <DependentUpon>Splashscreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\PinCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\PinCode.Designer.cs">
+      <DependentUpon>PinCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserControlInjectionMonitoring.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserControlInjectionMonitoring.Designer.cs">
+      <DependentUpon>UserControlInjectionMonitoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserControlMachineQRGenerator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserControlMachineQRGenerator.Designer.cs">
+      <DependentUpon>UserControlMachineQRGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserControlMoldMonitoring.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserControlMoldMonitoring.Designer.cs">
+      <DependentUpon>UserControlMoldMonitoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserControlMoldQRGenerator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserControlMoldQRGenerator.Designer.cs">
+      <DependentUpon>UserControlMoldQRGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserControlPrintLogs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserControlPrintLogs.Designer.cs">
+      <DependentUpon>UserControlPrintLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserControlQrGeneratorTool.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserControlQrGeneratorTool.Designer.cs">
+      <DependentUpon>UserControlQrGeneratorTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserControlStatusViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserControlStatusViewer.Designer.cs">
+      <DependentUpon>UserControlStatusViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserControlTransactionHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserControlTransactionHistory.Designer.cs">
+      <DependentUpon>UserControlTransactionHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserControlUserDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserControlUserDashboard.Designer.cs">
+      <DependentUpon>UserControlUserDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserForm.Designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UtilityClass\CsvExportUtility.cs" />
+    <Compile Include="UtilityClass\DashboardUtility.cs" />
+    <Compile Include="UtilityClass\DbConnection.cs" />
+    <Compile Include="UtilityClass\MoldDataManagementUtility.cs" />
+    <Compile Include="UtilityClass\PrintUtility.cs" />
+    <Compile Include="UtilityClass\ScannedDataUtility.cs" />
+    <Compile Include="UtilityClass\TransactionUtility.cs" />
+    <Compile Include="UtilityClass\UserControlUtility.cs" />
+    <Compile Include="UtilityClass\UserManagementUtility.cs" />
+    <EmbeddedResource Include="AdministratorForms\AdminDashboard.resx">
+      <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdministratorForms\ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdministratorForms\UpdateUser.resx">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdministratorForms\UserControlAddLocation.resx">
+      <DependentUpon>UserControlAddLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdministratorForms\UserControlAddUser.resx">
+      <DependentUpon>UserControlAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdministratorForms\UserControlDashboard.resx">
+      <DependentUpon>UserControlDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdministratorForms\UserControlMoldLocation.resx">
+      <DependentUpon>UserControlMoldLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdministratorForms\UserControlMoldMasterList.resx">
+      <DependentUpon>UserControlMoldMasterList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdministratorForms\UserControlTransactionManagement.resx">
+      <DependentUpon>UserControlTransactionManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdministratorForms\UserControlUpdateMoldData.resx">
+      <DependentUpon>UserControlUpdateMoldData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdministratorForms\UserControlUserManagement.resx">
+      <DependentUpon>UserControlUserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Splashscreen.resx">
+      <DependentUpon>Splashscreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\PinCode.resx">
+      <DependentUpon>PinCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserControlInjectionMonitoring.resx">
+      <DependentUpon>UserControlInjectionMonitoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserControlMachineQRGenerator.resx">
+      <DependentUpon>UserControlMachineQRGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserControlMoldMonitoring.resx">
+      <DependentUpon>UserControlMoldMonitoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserControlMoldQRGenerator.resx">
+      <DependentUpon>UserControlMoldQRGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserControlPrintLogs.resx">
+      <DependentUpon>UserControlPrintLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserControlQrGeneratorTool.resx">
+      <DependentUpon>UserControlQrGeneratorTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserControlStatusViewer.resx">
+      <DependentUpon>UserControlStatusViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserControlTransactionHistory.resx">
+      <DependentUpon>UserControlTransactionHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserControlUserDashboard.resx">
+      <DependentUpon>UserControlUserDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="MoldTrackingSystemDataSet.xsc">
+      <DependentUpon>MoldTrackingSystemDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MoldTrackingSystemDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MoldTrackingSystemDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MoldTrackingSystemDataSet.xss">
+      <DependentUpon>MoldTrackingSystemDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MoldTrackingSystemDataSet1.xsc">
+      <DependentUpon>MoldTrackingSystemDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="MoldTrackingSystemDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MoldTrackingSystemDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MoldTrackingSystemDataSet1.xss">
+      <DependentUpon>MoldTrackingSystemDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="MoldTrackingSystemDataSet2.xsc">
+      <DependentUpon>MoldTrackingSystemDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="MoldTrackingSystemDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MoldTrackingSystemDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MoldTrackingSystemDataSet2.xss">
+      <DependentUpon>MoldTrackingSystemDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="MoldTrackingSystemDataSet3.xsc">
+      <DependentUpon>MoldTrackingSystemDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="MoldTrackingSystemDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MoldTrackingSystemDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MoldTrackingSystemDataSet3.xss">
+      <DependentUpon>MoldTrackingSystemDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
