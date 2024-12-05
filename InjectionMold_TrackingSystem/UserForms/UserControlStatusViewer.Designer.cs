@@ -103,6 +103,8 @@
             "YAZAKI",
             "NCFL",
             "JCM",
+            "ZAMA",
+            "EXCELITAS",
             "ALL CUSTOMER"});
             this.CustomerID.Location = new System.Drawing.Point(680, 21);
             this.CustomerID.Name = "CustomerID";

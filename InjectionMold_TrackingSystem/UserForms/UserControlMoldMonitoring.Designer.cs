@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -337,16 +338,31 @@
             // 
             // TransactionDataGridView
             // 
-            this.TransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TransactionDataGridView.AllowUserToAddRows = false;
+            this.TransactionDataGridView.AllowUserToDeleteRows = false;
+            this.TransactionDataGridView.AllowUserToResizeColumns = false;
+            this.TransactionDataGridView.AllowUserToResizeRows = false;
+            this.TransactionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.TransactionDataGridView.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.TransactionDataGridView.EnableHeadersVisualStyles = false;
             this.TransactionDataGridView.FilterAndSortEnabled = true;
             this.TransactionDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.Location = new System.Drawing.Point(118, 94);
+            this.TransactionDataGridView.Location = new System.Drawing.Point(17, 42);
             this.TransactionDataGridView.MaxFilterButtonImageHeight = 23;
             this.TransactionDataGridView.Name = "TransactionDataGridView";
             this.TransactionDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TransactionDataGridView.Size = new System.Drawing.Size(240, 150);
+            this.TransactionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.TransactionDataGridView.Size = new System.Drawing.Size(815, 295);
             this.TransactionDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.TabIndex = 1;
+            this.TransactionDataGridView.TabIndex = 2;
             // 
             // UserControlMoldMonitoring
             // 
