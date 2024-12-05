@@ -23,7 +23,6 @@ namespace InjectionMold_TrackingSystem.UtilityClass
     public class MoldDataManagementUtility
     {
         private readonly DbConnection connection;
-
         public MoldDataManagementUtility()
         {
             connection = new DbConnection();

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Zuby.ADGV;
 
 namespace InjectionMold_TrackingSystem.UserForms
 {
@@ -27,23 +28,33 @@ namespace InjectionMold_TrackingSystem.UserForms
                 
                 var transactions = transactionUtility.GetLatestTransactionLogs(CustomerID.Text);
 
-                TransactionDataGridView.Rows.Clear();
+                DataTable transactionTable = new DataTable();
+                transactionTable.Columns.Add("MoldNumber", typeof(string));
+                transactionTable.Columns.Add("PartNumber", typeof(string));
+                transactionTable.Columns.Add("DieNumber", typeof(string));
+                transactionTable.Columns.Add("Customer", typeof(string));
+                transactionTable.Columns.Add("Status", typeof(string));
+                transactionTable.Columns.Add("Location", typeof(string));
+                transactionTable.Columns.Add("Remarks", typeof(string));
+                transactionTable.Columns.Add("Date", typeof(string));
+                transactionTable.Columns.Add("Time", typeof(string));
 
                 foreach (var transaction in transactions)
                 {
-                    int rowIndex = TransactionDataGridView.Rows.Add();
-                    TransactionDataGridView.Rows[rowIndex].Cells[0].Value = transaction.MoldNumber;
-                    TransactionDataGridView.Rows[rowIndex].Cells[1].Value = transaction.PartNumber;
-                    TransactionDataGridView.Rows[rowIndex].Cells[2].Value = transaction.DieNumber;
-                    TransactionDataGridView.Rows[rowIndex].Cells[3].Value = transaction.Customer;
-                    TransactionDataGridView.Rows[rowIndex].Cells[4].Value = transaction.Status;
-                    TransactionDataGridView.Rows[rowIndex].Cells[5].Value = transaction.Location;
-                    TransactionDataGridView.Rows[rowIndex].Cells[6].Value = transaction.Remarks;
-                    TransactionDataGridView.Rows[rowIndex].Cells[7].Value = transaction.Date.ToString("MM/dd/yyyy");
-                    TransactionDataGridView.Rows[rowIndex].Cells[8].Value = transaction.Time;
+                    transactionTable.Rows.Add(
+                    transaction.MoldNumber,
+                    transaction.PartNumber,
+                    transaction.DieNumber,
+                    transaction.Customer,
+                    transaction.Status,
+                    transaction.Location,
+                    transaction.Remarks,
+                    transaction.Date.ToString("MM/dd/yyyy"),
+                    transaction.Time);
                 }
-
-                TransactionDataGridView.ReadOnly = true;
+                advancedDataGridView1.Columns.Clear();
+                advancedDataGridView1.ReadOnly = true;
+                advancedDataGridView1.DataSource = transactionTable;
             }
             catch (Exception ex)
             {
@@ -58,9 +69,9 @@ namespace InjectionMold_TrackingSystem.UserForms
         {
             var dataTable = new DataTable();
 
-            foreach (DataGridViewColumn col in TransactionDataGridView.Columns)
+            foreach (DataGridViewColumn col in advancedDataGridView1.Columns)
                 dataTable.Columns.Add(col.HeaderText);
-            foreach (DataGridViewRow row in TransactionDataGridView.Rows)
+            foreach (DataGridViewRow row in advancedDataGridView1.Rows)
             {
                 DataRow dataRow = dataTable.NewRow();
                 foreach (DataGridViewCell cell in row.Cells)

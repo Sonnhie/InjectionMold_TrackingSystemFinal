@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlUserManagement));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.RegisterUser = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.TransactionDataGridView = new Zuby.ADGV.AdvancedDataGridView();
             this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,16 +43,20 @@
             this.Update = new System.Windows.Forms.DataGridViewImageColumn();
             this.Reset = new System.Windows.Forms.DataGridViewImageColumn();
             this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.TransactionDataGridView = new Zuby.ADGV.AdvancedDataGridView();
+            this.UpdateData = new System.Windows.Forms.DataGridViewImageColumn();
+            this.DeleteUser = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ResetPass = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.TransactionDataGridView);
             this.panel1.Controls.Add(this.RegisterUser);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.TransactionDataGridView);
             this.panel1.Location = new System.Drawing.Point(20, 20);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(843, 612);
@@ -91,10 +94,50 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "User\'s Account Data";
             // 
+            // EmployeeID
+            // 
+            this.EmployeeID.Name = "EmployeeID";
+            // 
+            // Column2
+            // 
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.Name = "Column5";
+            // 
+            // Column8
+            // 
+            this.Column8.Name = "Column8";
+            // 
+            // Update
+            // 
+            this.Update.Name = "Update";
+            // 
+            // Reset
+            // 
+            this.Reset.Name = "Reset";
+            // 
+            // Delete
+            // 
+            this.Delete.Name = "Delete";
+            // 
             // TransactionDataGridView
             // 
             this.TransactionDataGridView.AllowUserToAddRows = false;
-            this.TransactionDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.TransactionDataGridView.AllowUserToDeleteRows = false;
+            this.TransactionDataGridView.AllowUserToResizeColumns = false;
+            this.TransactionDataGridView.AllowUserToResizeRows = false;
+            this.TransactionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.TransactionDataGridView.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -103,115 +146,58 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.TransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.TransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TransactionDataGridView.ColumnHeadersHeight = 26;
             this.TransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.EmployeeID,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column8,
-            this.Update,
-            this.Reset,
-            this.Delete});
+            this.UpdateData,
+            this.DeleteUser,
+            this.ResetPass});
             this.TransactionDataGridView.EnableHeadersVisualStyles = false;
             this.TransactionDataGridView.FilterAndSortEnabled = true;
             this.TransactionDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.Location = new System.Drawing.Point(22, 56);
+            this.TransactionDataGridView.Location = new System.Drawing.Point(22, 63);
             this.TransactionDataGridView.MaxFilterButtonImageHeight = 23;
             this.TransactionDataGridView.Name = "TransactionDataGridView";
             this.TransactionDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TransactionDataGridView.Size = new System.Drawing.Size(802, 216);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TransactionDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.TransactionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.TransactionDataGridView.Size = new System.Drawing.Size(802, 218);
             this.TransactionDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.TabIndex = 0;
-            this.TransactionDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionDataGridView_CellContentClick);
+            this.TransactionDataGridView.TabIndex = 14;
+            this.TransactionDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionDataGridView_CellContentClick_1);
             // 
-            // EmployeeID
+            // UpdateData
             // 
-            this.EmployeeID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.EmployeeID.HeaderText = "Employee ID";
-            this.EmployeeID.MinimumWidth = 24;
-            this.EmployeeID.Name = "EmployeeID";
-            this.EmployeeID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.EmployeeID.Width = 106;
+            this.UpdateData.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UpdateData.HeaderText = "Update";
+            this.UpdateData.MinimumWidth = 24;
+            this.UpdateData.Name = "UpdateData";
+            this.UpdateData.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.UpdateData.Width = 78;
             // 
-            // Column2
+            // DeleteUser
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column2.HeaderText = "Employee Name";
-            this.Column2.MinimumWidth = 24;
-            this.Column2.Name = "Column2";
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column2.Width = 119;
+            this.DeleteUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DeleteUser.HeaderText = "Delete";
+            this.DeleteUser.MinimumWidth = 24;
+            this.DeleteUser.Name = "DeleteUser";
+            this.DeleteUser.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.DeleteUser.Width = 74;
             // 
-            // Column3
+            // ResetPass
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column3.HeaderText = "Section";
-            this.Column3.MinimumWidth = 24;
-            this.Column3.Name = "Column3";
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column3.Width = 79;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column4.HeaderText = "Username";
-            this.Column4.MinimumWidth = 24;
-            this.Column4.Name = "Column4";
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column4.Width = 92;
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column5.HeaderText = "Password";
-            this.Column5.MinimumWidth = 24;
-            this.Column5.Name = "Column5";
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column5.Width = 88;
-            // 
-            // Column8
-            // 
-            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column8.HeaderText = "User Type";
-            this.Column8.MinimumWidth = 24;
-            this.Column8.Name = "Column8";
-            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column8.Width = 81;
-            // 
-            // Update
-            // 
-            this.Update.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Update.HeaderText = "Update";
-            this.Update.Image = ((System.Drawing.Image)(resources.GetObject("Update.Image")));
-            this.Update.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Update.MinimumWidth = 24;
-            this.Update.Name = "Update";
-            this.Update.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Update.ToolTipText = "Update";
-            // 
-            // Reset
-            // 
-            this.Reset.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Reset.HeaderText = "Reset Password";
-            this.Reset.Image = ((System.Drawing.Image)(resources.GetObject("Reset.Image")));
-            this.Reset.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Reset.MinimumWidth = 24;
-            this.Reset.Name = "Reset";
-            this.Reset.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Reset.ToolTipText = "Reset Password";
-            // 
-            // Delete
-            // 
-            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Image = ((System.Drawing.Image)(resources.GetObject("Delete.Image")));
-            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Delete.MinimumWidth = 24;
-            this.Delete.Name = "Delete";
-            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Delete.ToolTipText = "Delete";
+            this.ResetPass.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ResetPass.HeaderText = "Change Password";
+            this.ResetPass.MinimumWidth = 24;
+            this.ResetPass.Name = "ResetPass";
+            this.ResetPass.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ResetPass.Width = 138;
             // 
             // UserControlUserManagement
             // 
@@ -230,7 +216,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private Zuby.ADGV.AdvancedDataGridView TransactionDataGridView;
+      //  private ADGV.AdvancedDataGridView TransactionDataGridView;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button RegisterUser;
@@ -244,5 +230,9 @@
         private System.Windows.Forms.DataGridViewImageColumn Update;
         private System.Windows.Forms.DataGridViewImageColumn Reset;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
+        private Zuby.ADGV.AdvancedDataGridView TransactionDataGridView;
+        private System.Windows.Forms.DataGridViewImageColumn UpdateData;
+        private System.Windows.Forms.DataGridViewImageColumn DeleteUser;
+        private System.Windows.Forms.DataGridViewImageColumn ResetPass;
     }
 }

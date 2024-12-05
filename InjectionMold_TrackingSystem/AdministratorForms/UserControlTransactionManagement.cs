@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlTypes;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,8 +39,21 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
 
         private void Next_Click(object sender, EventArgs e)
         {
-            int rowsFetched = LoadTransactionLogs(currentPageindex * PageSize, PageSize);
-            if (rowsFetched > 0)
+            TurnNextDataSet();
+        }
+        private void Previous_Click(object sender, EventArgs e)
+        {
+            if (currentPageindex > 0)
+            {
+                currentPageindex--;
+                LoadTransactionLogs(currentPageindex + 1, PageSize);
+                Next.Enabled = true;
+            }    
+        }
+        private void TurnNextDataSet()
+        {
+            int rowsFetched = LoadTransactionLogs(currentPageindex + 1, PageSize);
+            if (rowsFetched > 1)
             {
                 currentPageindex++;
             }
@@ -48,44 +62,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 Next.Enabled = false;
             }
         }
-        private void Previous_Click(object sender, EventArgs e)
-        {
-            if (currentPageindex > 1)
-            {
-                currentPageindex--;
-                LoadTransactionLogs((currentPageindex - 1) * PageSize, PageSize);
-                Next.Enabled = true;
-            }
-        }
-
-        private void TransactionDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
-            string RowId = TransactionDataGridView.Rows[e.RowIndex].Cells["id"].Value.ToString();
-            if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "Update")
-            {
-                MoldNumber.Text = TransactionDataGridView.Rows[e.RowIndex].Cells["Moldno"].Value.ToString();
-                PartNumber.Text = TransactionDataGridView.Rows[e.RowIndex].Cells["Partno"].Value.ToString();
-                DieNumber.Text = TransactionDataGridView.Rows[e.RowIndex].Cells["Dieno"].Value.ToString();
-                Customer.Text = TransactionDataGridView.Rows[e.RowIndex].Cells["Customers"].Value.ToString();
-                Status.Text = TransactionDataGridView.Rows[e.RowIndex].Cells["MoldStatus"].Value.ToString();
-                Locations.Text = TransactionDataGridView.Rows[e.RowIndex].Cells["MoldLocation"].Value.ToString();
-                Remarks.Text = TransactionDataGridView.Rows[e.RowIndex].Cells["Remark"].Value.ToString();
-                ShotCount.Text = TransactionDataGridView.Rows[e.RowIndex].Cells["Count"].Value.ToString();
-            }
-            else if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "Delete")
-            {
-                DialogResult result = MessageBox.Show("Are you sure you want to delete this data?", "Delete Mold", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
-                {
-                    bool SuccessDeleted = transactionUtility.DeleteTransactionData(RowId);
-                    if (SuccessDeleted)
-                        MessageBox.Show("Deleted Successfully.");
-                        LoadTransactionLogs(currentPageindex, PageSize);
-                }
-            }
-        }
-
         private void SaveEdit_Click(object sender, EventArgs e)
         {
             InsertUpdatedData();
@@ -105,7 +81,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                     MessageBox.Show("No row selected.");
                     return;
                 }
-                string RowId = TransactionDataGridView.Rows[selectedRowIndex].Cells["id"].Value.ToString();
+                string RowId = TransactionDataGridView.Rows[selectedRowIndex].Cells["ID"].Value.ToString();
                 TransactionData transaction = new TransactionData
                 {
                     Id = RowId,
@@ -146,34 +122,80 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             }
             return result;
         }
+
+        private void TransactionDataGridView_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+            string RowId = TransactionDataGridView.Rows[e.RowIndex].Cells["ID"].Value.ToString();
+
+            DataGridViewRow selectedRow = TransactionDataGridView.Rows[e.RowIndex];
+
+            if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "UpdateData")
+            {
+                MoldNumber.Text = selectedRow.Cells["Mold Number"].Value.ToString();
+                PartNumber.Text = selectedRow.Cells["Part Number"].Value.ToString();
+                DieNumber.Text = selectedRow.Cells["Die Number"].Value.ToString();
+                Customer.Text = selectedRow.Cells["Customer"].Value.ToString();
+                Status.Text = selectedRow.Cells["Status"].Value.ToString();
+                Locations.Text = selectedRow.Cells["Location"].Value.ToString();
+                Remarks.Text = selectedRow.Cells["Remarks"].Value.ToString();
+                ShotCount.Text = selectedRow.Cells["Shot Count"].Value.ToString();
+            }
+            else if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "DeleteData")
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this data?", "Delete Mold", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    bool SuccessDeleted = transactionUtility.DeleteTransactionData(RowId);
+                    if (SuccessDeleted)
+                        MessageBox.Show("Deleted Successfully.");
+                    LoadTransactionLogs(currentPageindex, PageSize);
+                }
+            }
+        }
+
         public int LoadTransactionLogs(int pageNumber, int pageSize)
         {
+            MessageBox.Show(pageNumber.ToString(), pageSize.ToString());
             try
             {
                 var transactions = transactionUtility.GetAllTransactionLogs(StartDatePicker.Value.Date, EndDatePicker.Value.Date, pageNumber, pageSize);
-
-                if (transactions == null || transactions.Count == 0)
-                {
-                    MessageBox.Show("No data found for the selected date range.");
-                }
-                TransactionDataGridView.Rows.Clear();
+                TransactionDataGridView.DataSource = null;
+                DataTable transactionTable = new DataTable();
+                transactionTable.Columns.Add("ID", typeof(string));
+                transactionTable.Columns.Add("Mold Number", typeof(string));
+                transactionTable.Columns.Add("Part Number", typeof(string));
+                transactionTable.Columns.Add("Die Number", typeof(string));
+                transactionTable.Columns.Add("Customer", typeof(string));
+                transactionTable.Columns.Add("Status", typeof(string));
+                transactionTable.Columns.Add("Location", typeof(string));
+                transactionTable.Columns.Add("Shot Count", typeof(string));
+                transactionTable.Columns.Add("Remarks", typeof(string));
+                transactionTable.Columns.Add("Date", typeof(string));
+                transactionTable.Columns.Add("Time", typeof(string));
 
                 foreach (var transaction in transactions)
                 {
-                    int rowIndex = TransactionDataGridView.Rows.Add();
-                    TransactionDataGridView.Rows[rowIndex].Cells[0].Value = transaction.Id;
-                    TransactionDataGridView.Rows[rowIndex].Cells[1].Value = transaction.MoldNumber;
-                    TransactionDataGridView.Rows[rowIndex].Cells[2].Value = transaction.PartNumber;
-                    TransactionDataGridView.Rows[rowIndex].Cells[3].Value = transaction.DieNumber;
-                    TransactionDataGridView.Rows[rowIndex].Cells[4].Value = transaction.Customer;
-                    TransactionDataGridView.Rows[rowIndex].Cells[5].Value = transaction.Status;
-                    TransactionDataGridView.Rows[rowIndex].Cells[6].Value = transaction.Location;
-                    TransactionDataGridView.Rows[rowIndex].Cells[7].Value = transaction.ShotCount;
-                    TransactionDataGridView.Rows[rowIndex].Cells[8].Value = transaction.Remarks;
-                    TransactionDataGridView.Rows[rowIndex].Cells[9].Value = transaction.Date.ToString("MM/dd/yyyy");
-                    TransactionDataGridView.Rows[rowIndex].Cells[10].Value = transaction.Time;
+                    transactionTable.Rows.Add
+                        (
+                            transaction.Id,
+                            transaction.MoldNumber,
+                            transaction.PartNumber,
+                            transaction.DieNumber,
+                            transaction.Customer,
+                            transaction.Status,
+                            transaction.Location,
+                            transaction.ShotCount,
+                            transaction.Remarks,
+                            transaction.Date.ToString("MM/dd/yyyy"),
+                            transaction.Time  
+                        );
                 }
+                TransactionDataGridView.DataSource = transactionTable;
+                TransactionDataGridView.Columns["UpdateData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
+                TransactionDataGridView.Columns["DeleteData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
                 TransactionDataGridView.ReadOnly = true;
+                
                 return transactions.Count;
             }
             catch (Exception ex)

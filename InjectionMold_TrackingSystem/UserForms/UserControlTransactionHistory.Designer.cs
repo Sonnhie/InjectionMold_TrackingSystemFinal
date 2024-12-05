@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,7 +36,6 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.ExportDataToCSV = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.TransactionDataGridView = new Zuby.ADGV.AdvancedDataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,12 +47,14 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TransactionDataGridView = new Zuby.ADGV.AdvancedDataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.TransactionDataGridView);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.EndDatePicker);
@@ -62,7 +62,6 @@
             this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.ExportDataToCSV);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.TransactionDataGridView);
             this.panel1.Location = new System.Drawing.Point(14, 16);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(853, 591);
@@ -134,140 +133,62 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Transaction History";
             // 
-            // TransactionDataGridView
-            // 
-            this.TransactionDataGridView.AllowUserToAddRows = false;
-            this.TransactionDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.TransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column2,
-            this.Column1,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column8,
-            this.Column6,
-            this.Column9,
-            this.Column10,
-            this.Column11,
-            this.UserID});
-            this.TransactionDataGridView.EnableHeadersVisualStyles = false;
-            this.TransactionDataGridView.FilterAndSortEnabled = true;
-            this.TransactionDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.Location = new System.Drawing.Point(16, 60);
-            this.TransactionDataGridView.MaxFilterButtonImageHeight = 23;
-            this.TransactionDataGridView.Name = "TransactionDataGridView";
-            this.TransactionDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TransactionDataGridView.Size = new System.Drawing.Size(817, 483);
-            this.TransactionDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.TabIndex = 1;
-            // 
             // Column2
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column2.HeaderText = "Mold Number";
-            this.Column2.MinimumWidth = 24;
             this.Column2.Name = "Column2";
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column2.Width = 113;
             // 
             // Column1
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column1.HeaderText = "Part Number";
-            this.Column1.MinimumWidth = 24;
             this.Column1.Name = "Column1";
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column1.Width = 107;
             // 
             // Column3
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column3.HeaderText = "Die number";
-            this.Column3.MinimumWidth = 24;
             this.Column3.Name = "Column3";
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column3.Width = 101;
             // 
             // Column4
             // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column4.HeaderText = "Customer";
-            this.Column4.MinimumWidth = 24;
             this.Column4.Name = "Column4";
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column4.Width = 90;
             // 
             // Column5
             // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column5.HeaderText = "Mold Status";
-            this.Column5.MinimumWidth = 24;
             this.Column5.Name = "Column5";
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column5.Width = 103;
             // 
             // Column8
             // 
-            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column8.HeaderText = "Mold Location";
-            this.Column8.MinimumWidth = 24;
             this.Column8.Name = "Column8";
-            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column8.Width = 119;
             // 
             // Column6
             // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column6.HeaderText = "Shot Count";
-            this.Column6.MinimumWidth = 24;
             this.Column6.Name = "Column6";
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column6.Width = 99;
             // 
             // Column9
             // 
-            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column9.HeaderText = "Remarks";
-            this.Column9.MinimumWidth = 24;
             this.Column9.Name = "Column9";
-            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column9.Width = 82;
             // 
             // Column10
             // 
-            this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column10.HeaderText = "Date";
-            this.Column10.MinimumWidth = 24;
             this.Column10.Name = "Column10";
-            this.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column10.Width = 63;
             // 
             // Column11
             // 
-            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column11.HeaderText = "Time";
-            this.Column11.MinimumWidth = 24;
             this.Column11.Name = "Column11";
-            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column11.Width = 60;
             // 
             // UserID
             // 
-            this.UserID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.UserID.HeaderText = "UserID";
-            this.UserID.MinimumWidth = 24;
             this.UserID.Name = "UserID";
-            this.UserID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.UserID.Width = 70;
+            // 
+            // TransactionDataGridView
+            // 
+            this.TransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TransactionDataGridView.FilterAndSortEnabled = true;
+            this.TransactionDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.TransactionDataGridView.Location = new System.Drawing.Point(71, 108);
+            this.TransactionDataGridView.MaxFilterButtonImageHeight = 23;
+            this.TransactionDataGridView.Name = "TransactionDataGridView";
+            this.TransactionDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TransactionDataGridView.Size = new System.Drawing.Size(469, 270);
+            this.TransactionDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.TransactionDataGridView.TabIndex = 82;
             // 
             // UserControlTransactionHistory
             // 
@@ -286,7 +207,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private Zuby.ADGV.AdvancedDataGridView TransactionDataGridView;
+      //  private ADGV.AdvancedDataGridView TransactionDataGridView;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button ExportDataToCSV;
         private System.Windows.Forms.Label label2;
@@ -305,5 +226,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
+        private Zuby.ADGV.AdvancedDataGridView TransactionDataGridView;
     }
 }

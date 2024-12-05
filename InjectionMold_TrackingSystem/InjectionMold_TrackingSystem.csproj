@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AdvancedDataGridView, Version=1.2.29921.15, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="AdvancedDataGridView">
       <HintPath>..\packages\DG.AdvancedDataGridView.1.2.29921.15\lib\net40\AdvancedDataGridView.dll</HintPath>
     </Reference>
     <Reference Include="CircularProgressBar, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">

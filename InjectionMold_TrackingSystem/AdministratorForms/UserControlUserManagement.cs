@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Zuby.ADGV;
 using static System.Collections.Specialized.BitVector32;
 
 namespace InjectionMold_TrackingSystem.AdministratorForms
@@ -34,33 +35,32 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             UserControlAddUser addUser = new UserControlAddUser(this);
             controlUtility.DisplayUserControl(addUser, panel2);
         }
-
-        private void TransactionDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void TransactionDataGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             string employeeID = TransactionDataGridView.Rows[e.RowIndex].Cells["EmployeeID"].Value.ToString();
             if (e.RowIndex < 0) return;
 
-            if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "Update")
+            if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "UpdateData")
             {
                 UpdateUser user = new UpdateUser(this, employeeID);
                 user.Show();
             }
-            else if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "Delete")
+            else if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "DeleteUser")
             {
-                DialogResult result = MessageBox.Show("Are you sure you want to delete this user account?","Delete User Account", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this user account?", "Delete User Account", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
-                   userManagementUtility.DeleteRecord(employeeID);
-                   LoadUsers();
+                    userManagementUtility.DeleteRecord(employeeID);
+                    LoadUsers();
                 }
             }
-            else if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "Reset")
+            else if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "ResetPass")
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to change password?", "Change Password", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
-                   ChangePassword password = new ChangePassword(this, employeeID);
-                   password.Show();
+                    ChangePassword password = new ChangePassword(this, employeeID);
+                    password.Show();
                 }
             }
         }
@@ -72,19 +72,34 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 UserManagementUtility userManagementUtility = new UserManagementUtility();
                 var users = userManagementUtility.GetUsers();
 
-                TransactionDataGridView.Rows.Clear();
+                
+                DataTable transactionTable = new DataTable();
+                transactionTable.Columns.Add("EmployeeId", typeof(string));
+                transactionTable.Columns.Add("Employee Name", typeof(string));
+                transactionTable.Columns.Add("Section", typeof(string));
+                transactionTable.Columns.Add("Username", typeof(string));
+                transactionTable.Columns.Add("Password", typeof(string));
+                transactionTable.Columns.Add("Role", typeof(string));
 
                 foreach (var user in users)
                 {
-                    int rowIndex = TransactionDataGridView.Rows.Add();
-                    TransactionDataGridView.Rows[rowIndex].Cells[0].Value = user.EmployeeId;
-                    TransactionDataGridView.Rows[rowIndex].Cells[1].Value = user.EmployeeName;
-                    TransactionDataGridView.Rows[rowIndex].Cells[2].Value = user.Section;
-                    TransactionDataGridView.Rows[rowIndex].Cells[3].Value = user.UserName;
-                    TransactionDataGridView.Rows[rowIndex].Cells[4].Value = user.Password;
-                    TransactionDataGridView.Rows[rowIndex].Cells[5].Value = user.Role;
+                    transactionTable.Rows.Add
+                        (
+                            user.EmployeeId,
+                            user.EmployeeName,
+                            user.Section,
+                            user.UserName,
+                            user.Password,
+                            user.Role
+                        );
                 }
+                TransactionDataGridView.DataSource = transactionTable;
+                TransactionDataGridView.Columns["UpdateData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
+                TransactionDataGridView.Columns["DeleteUser"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
+                TransactionDataGridView.Columns["ResetPass"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
+
                 TransactionDataGridView.ReadOnly = true;
+                
             }
             catch (Exception ex)
             {

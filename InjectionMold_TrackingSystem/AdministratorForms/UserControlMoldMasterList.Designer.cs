@@ -30,9 +30,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlMoldMasterList));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Previous = new System.Windows.Forms.Button();
             this.Next = new System.Windows.Forms.Button();
@@ -51,7 +48,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             this.label6 = new System.Windows.Forms.Label();
             this.lblform = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.TransactionDataGridView = new Zuby.ADGV.AdvancedDataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MoldNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Material = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,12 +57,14 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Update = new System.Windows.Forms.DataGridViewImageColumn();
             this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.TransactionDataGridView = new Zuby.ADGV.AdvancedDataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.TransactionDataGridView);
             this.panel1.Controls.Add(this.Previous);
             this.panel1.Controls.Add(this.Next);
             this.panel1.Controls.Add(this.AddNewMold);
@@ -84,7 +82,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.lblform);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.TransactionDataGridView);
             this.panel1.Location = new System.Drawing.Point(17, 26);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(843, 622);
@@ -295,140 +292,54 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             this.label3.TabIndex = 2;
             this.label3.Text = "Mold Master List";
             // 
-            // TransactionDataGridView
-            // 
-            this.TransactionDataGridView.AllowUserToAddRows = false;
-            this.TransactionDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.TransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.MoldNumber,
-            this.Material,
-            this.Material_name,
-            this.DieNumber,
-            this.Customer,
-            this.Column5,
-            this.Update,
-            this.Delete});
-            this.TransactionDataGridView.EnableHeadersVisualStyles = false;
-            this.TransactionDataGridView.FilterAndSortEnabled = true;
-            this.TransactionDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.Location = new System.Drawing.Point(22, 50);
-            this.TransactionDataGridView.MaxFilterButtonImageHeight = 23;
-            this.TransactionDataGridView.Name = "TransactionDataGridView";
-            this.TransactionDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.TransactionDataGridView.Size = new System.Drawing.Size(802, 265);
-            this.TransactionDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.TabIndex = 0;
-            this.TransactionDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionDataGridView_CellClick);
-            // 
             // id
             // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.id.HeaderText = "Id";
-            this.id.MinimumWidth = 24;
             this.id.Name = "id";
-            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.id.Width = 44;
             // 
             // MoldNumber
             // 
-            this.MoldNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MoldNumber.HeaderText = "Mold Number";
-            this.MoldNumber.MinimumWidth = 24;
             this.MoldNumber.Name = "MoldNumber";
-            this.MoldNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.MoldNumber.Width = 113;
             // 
             // Material
             // 
-            this.Material.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Material.HeaderText = "Part Number";
-            this.Material.MinimumWidth = 24;
             this.Material.Name = "Material";
-            this.Material.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Material.Width = 107;
             // 
             // Material_name
             // 
-            this.Material_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Material_name.HeaderText = "Part Name";
-            this.Material_name.MinimumWidth = 24;
             this.Material_name.Name = "Material_name";
-            this.Material_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Material_name.Width = 96;
             // 
             // DieNumber
             // 
-            this.DieNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DieNumber.HeaderText = "Die number";
-            this.DieNumber.MinimumWidth = 24;
             this.DieNumber.Name = "DieNumber";
-            this.DieNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.DieNumber.Width = 101;
             // 
             // Customer
             // 
-            this.Customer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Customer.HeaderText = "Customer";
-            this.Customer.MinimumWidth = 24;
             this.Customer.Name = "Customer";
-            this.Customer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Customer.Width = 90;
             // 
             // Column5
             // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column5.HeaderText = "Date Created";
-            this.Column5.MinimumWidth = 24;
             this.Column5.Name = "Column5";
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column5.Width = 116;
             // 
             // Update
             // 
-            this.Update.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle2.NullValue")));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Transparent;
-            this.Update.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Update.HeaderText = "";
-            this.Update.Image = ((System.Drawing.Image)(resources.GetObject("Update.Image")));
-            this.Update.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Update.MinimumWidth = 24;
             this.Update.Name = "Update";
-            this.Update.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Update.ToolTipText = "Edit Data";
-            this.Update.Width = 24;
             // 
             // Delete
             // 
-            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Delete.HeaderText = "";
-            this.Delete.Image = ((System.Drawing.Image)(resources.GetObject("Delete.Image")));
-            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Delete.MinimumWidth = 24;
             this.Delete.Name = "Delete";
-            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Delete.ToolTipText = "Delete Data";
-            this.Delete.Width = 24;
+            // 
+            // TransactionDataGridView
+            // 
+            this.TransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TransactionDataGridView.FilterAndSortEnabled = true;
+            this.TransactionDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.TransactionDataGridView.Location = new System.Drawing.Point(74, 86);
+            this.TransactionDataGridView.MaxFilterButtonImageHeight = 23;
+            this.TransactionDataGridView.Name = "TransactionDataGridView";
+            this.TransactionDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TransactionDataGridView.Size = new System.Drawing.Size(240, 150);
+            this.TransactionDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.TransactionDataGridView.TabIndex = 64;
             // 
             // UserControlMoldMasterList
             // 
@@ -449,7 +360,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
-        private Zuby.ADGV.AdvancedDataGridView TransactionDataGridView;
+       // private ADGV.AdvancedDataGridView TransactionDataGridView;
         public System.Windows.Forms.Button AddNewMold;
         public System.Windows.Forms.Button ClearButton;
         public System.Windows.Forms.Button UpdateMold;
@@ -476,5 +387,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         private System.Windows.Forms.DataGridViewImageColumn Updates;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
         private System.Windows.Forms.DataGridViewImageColumn Update;
+        private Zuby.ADGV.AdvancedDataGridView TransactionDataGridView;
     }
 }

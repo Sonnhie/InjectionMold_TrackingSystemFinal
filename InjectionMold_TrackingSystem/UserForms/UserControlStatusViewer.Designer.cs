@@ -30,12 +30,12 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.advancedDataGridView1 = new Zuby.ADGV.AdvancedDataGridView();
             this.CustomerID = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.ExportDataToCSV = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.TransactionDataGridView = new Zuby.ADGV.AdvancedDataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,21 +46,48 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TransactionDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.advancedDataGridView1);
             this.panel1.Controls.Add(this.CustomerID);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.ExportDataToCSV);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.TransactionDataGridView);
             this.panel1.Location = new System.Drawing.Point(16, 21);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(853, 625);
             this.panel1.TabIndex = 1;
+            // 
+            // advancedDataGridView1
+            // 
+            this.advancedDataGridView1.AllowUserToAddRows = false;
+            this.advancedDataGridView1.AllowUserToDeleteRows = false;
+            this.advancedDataGridView1.AllowUserToResizeColumns = false;
+            this.advancedDataGridView1.AllowUserToResizeRows = false;
+            this.advancedDataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.advancedDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.advancedDataGridView1.EnableHeadersVisualStyles = false;
+            this.advancedDataGridView1.FilterAndSortEnabled = true;
+            this.advancedDataGridView1.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.advancedDataGridView1.Location = new System.Drawing.Point(16, 75);
+            this.advancedDataGridView1.MaxFilterButtonImageHeight = 23;
+            this.advancedDataGridView1.Name = "advancedDataGridView1";
+            this.advancedDataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advancedDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.advancedDataGridView1.Size = new System.Drawing.Size(816, 493);
+            this.advancedDataGridView1.SortStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.advancedDataGridView1.TabIndex = 0;
             // 
             // CustomerID
             // 
@@ -123,120 +150,41 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Mold Status Viewer";
             // 
-            // TransactionDataGridView
-            // 
-            this.TransactionDataGridView.AllowUserToAddRows = false;
-            this.TransactionDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.TransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column2,
-            this.Column1,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column8,
-            this.Column9,
-            this.Column10,
-            this.Column11});
-            this.TransactionDataGridView.EnableHeadersVisualStyles = false;
-            this.TransactionDataGridView.FilterAndSortEnabled = true;
-            this.TransactionDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.Location = new System.Drawing.Point(16, 60);
-            this.TransactionDataGridView.MaxFilterButtonImageHeight = 23;
-            this.TransactionDataGridView.Name = "TransactionDataGridView";
-            this.TransactionDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TransactionDataGridView.Size = new System.Drawing.Size(817, 508);
-            this.TransactionDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.TabIndex = 1;
-            // 
             // Column2
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column2.HeaderText = "Mold Number";
-            this.Column2.MinimumWidth = 24;
             this.Column2.Name = "Column2";
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column2.Width = 113;
             // 
             // Column1
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column1.HeaderText = "Part Number";
-            this.Column1.MinimumWidth = 24;
             this.Column1.Name = "Column1";
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column1.Width = 107;
             // 
             // Column3
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column3.HeaderText = "Die number";
-            this.Column3.MinimumWidth = 24;
             this.Column3.Name = "Column3";
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column3.Width = 101;
             // 
             // Column4
             // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column4.HeaderText = "Customer";
-            this.Column4.MinimumWidth = 24;
             this.Column4.Name = "Column4";
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column4.Width = 90;
             // 
             // Column5
             // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column5.HeaderText = "Mold Status";
-            this.Column5.MinimumWidth = 24;
             this.Column5.Name = "Column5";
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column5.Width = 103;
             // 
             // Column8
             // 
-            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column8.HeaderText = "Mold Location";
-            this.Column8.MinimumWidth = 24;
             this.Column8.Name = "Column8";
-            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column8.Width = 119;
             // 
             // Column9
             // 
-            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column9.HeaderText = "Remarks";
-            this.Column9.MinimumWidth = 24;
             this.Column9.Name = "Column9";
-            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column9.Width = 82;
             // 
             // Column10
             // 
-            this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column10.HeaderText = "Date";
-            this.Column10.MinimumWidth = 24;
             this.Column10.Name = "Column10";
-            this.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column10.Width = 63;
             // 
             // Column11
             // 
-            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column11.HeaderText = "Time";
-            this.Column11.MinimumWidth = 24;
             this.Column11.Name = "Column11";
-            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Column11.Width = 60;
             // 
             // UserControlStatusViewer
             // 
@@ -249,7 +197,7 @@
             this.Size = new System.Drawing.Size(884, 660);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TransactionDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -262,7 +210,7 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button ExportDataToCSV;
         private System.Windows.Forms.Label label3;
-        private Zuby.ADGV.AdvancedDataGridView TransactionDataGridView;
+     //   private ADGV.AdvancedDataGridView TransactionDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -272,5 +220,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private Zuby.ADGV.AdvancedDataGridView advancedDataGridView1;
     }
 }
