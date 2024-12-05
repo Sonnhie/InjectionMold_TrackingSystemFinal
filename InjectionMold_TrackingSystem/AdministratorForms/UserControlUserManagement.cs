@@ -29,7 +29,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             _employee = employeename;
             LoadUsers();
         }
-
         private void RegisterUser_Click(object sender, EventArgs e)
         {
             UserControlAddUser addUser = new UserControlAddUser(this);
@@ -64,7 +63,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 }
             }
         }
-
         public void LoadUsers()
         {
             try
@@ -72,34 +70,38 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 UserManagementUtility userManagementUtility = new UserManagementUtility();
                 var users = userManagementUtility.GetUsers();
 
-                
-                DataTable transactionTable = new DataTable();
-                transactionTable.Columns.Add("EmployeeId", typeof(string));
-                transactionTable.Columns.Add("Employee Name", typeof(string));
-                transactionTable.Columns.Add("Section", typeof(string));
-                transactionTable.Columns.Add("Username", typeof(string));
-                transactionTable.Columns.Add("Password", typeof(string));
-                transactionTable.Columns.Add("Role", typeof(string));
-
-                foreach (var user in users)
+                if (users != null)
                 {
-                    transactionTable.Rows.Add
-                        (
-                            user.EmployeeId,
-                            user.EmployeeName,
-                            user.Section,
-                            user.UserName,
-                            user.Password,
-                            user.Role
-                        );
-                }
-                TransactionDataGridView.DataSource = transactionTable;
-                TransactionDataGridView.Columns["UpdateData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
-                TransactionDataGridView.Columns["DeleteUser"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
-                TransactionDataGridView.Columns["ResetPass"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
+                    DataTable transactionTable = new DataTable();
+                    transactionTable.Columns.Add("EmployeeId", typeof(string));
+                    transactionTable.Columns.Add("Employee Name", typeof(string));
+                    transactionTable.Columns.Add("Section", typeof(string));
+                    transactionTable.Columns.Add("Username", typeof(string));
+                    transactionTable.Columns.Add("Password", typeof(string));
+                    transactionTable.Columns.Add("Role", typeof(string));
 
-                TransactionDataGridView.ReadOnly = true;
-                
+                    foreach (var user in users)
+                    {
+                        transactionTable.Rows.Add
+                            (
+                                user.EmployeeId,
+                                user.EmployeeName,
+                                user.Section,
+                                user.UserName,
+                                user.Password,
+                                user.Role
+                            );
+                    }
+                    TransactionDataGridView.DataSource = transactionTable;
+                    TransactionDataGridView.Columns["UpdateData"].Visible = true;
+                    TransactionDataGridView.Columns["DeleteUser"].Visible = true;
+                    TransactionDataGridView.Columns["ResetPass"].Visible = true;
+                    TransactionDataGridView.Columns["UpdateData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
+                    TransactionDataGridView.Columns["DeleteUser"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
+                    TransactionDataGridView.Columns["ResetPass"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
+
+                    TransactionDataGridView.ReadOnly = true;
+                }
             }
             catch (Exception ex)
             {

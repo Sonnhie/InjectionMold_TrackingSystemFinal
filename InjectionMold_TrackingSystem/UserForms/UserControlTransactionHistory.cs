@@ -31,30 +31,42 @@ namespace InjectionMold_TrackingSystem.UserForms
             {
                 var transactions = transactionUtility.GetTransactionLogs(section, StartDatePicker.Value.Date, EndDatePicker.Value.Date);
 
-                if (transactions == null || transactions.Count == 0)
+                if (transactions != null)
                 {
-                    MessageBox.Show("No data found for the selected date range.");
+                    TransactionDataGridView.DataSource = null;
+                    DataTable transactionTable = new DataTable();
+                    //transactionTable.Columns.Add("ID", typeof(string));
+                    transactionTable.Columns.Add("Mold Number", typeof(string));
+                    transactionTable.Columns.Add("Part Number", typeof(string));
+                    transactionTable.Columns.Add("Die Number", typeof(string));
+                    transactionTable.Columns.Add("Customer", typeof(string));
+                    transactionTable.Columns.Add("Status", typeof(string));
+                    transactionTable.Columns.Add("Location", typeof(string));
+                    transactionTable.Columns.Add("Shot Count", typeof(string));
+                    transactionTable.Columns.Add("Remarks", typeof(string));
+                    transactionTable.Columns.Add("Date", typeof(string));
+                    transactionTable.Columns.Add("Time", typeof(string));
+
+                    foreach (var transaction in transactions)
+                    {
+                        transactionTable.Rows.Add
+                            (
+                               // transaction.Id,
+                                transaction.MoldNumber,
+                                transaction.PartNumber,
+                                transaction.DieNumber,
+                                transaction.Customer,
+                                transaction.Status,
+                                transaction.Location,
+                                transaction.ShotCount,
+                                transaction.Remarks,
+                                transaction.Date.ToString("MM/dd/yyyy"),
+                                transaction.Time
+                            );
+                    }
+                    TransactionDataGridView.DataSource = transactionTable;
+                    TransactionDataGridView.ReadOnly = true;
                 }
-
-                TransactionDataGridView.Rows.Clear();
-
-                foreach (var transaction in transactions)
-                {
-                    int rowIndex = TransactionDataGridView.Rows.Add();
-                    TransactionDataGridView.Rows[rowIndex].Cells[0].Value = transaction.MoldNumber;
-                    TransactionDataGridView.Rows[rowIndex].Cells[1].Value = transaction.PartNumber;
-                    TransactionDataGridView.Rows[rowIndex].Cells[2].Value = transaction.DieNumber;
-                    TransactionDataGridView.Rows[rowIndex].Cells[3].Value = transaction.Customer;
-                    TransactionDataGridView.Rows[rowIndex].Cells[4].Value = transaction.Status;
-                    TransactionDataGridView.Rows[rowIndex].Cells[5].Value = transaction.Location;
-                    TransactionDataGridView.Rows[rowIndex].Cells[6].Value = transaction.ShotCount;
-                    TransactionDataGridView.Rows[rowIndex].Cells[7].Value = transaction.Remarks;
-                    TransactionDataGridView.Rows[rowIndex].Cells[8].Value = transaction.Date.ToString("MM/dd/yyyy");
-                    TransactionDataGridView.Rows[rowIndex].Cells[9].Value = transaction.Time;
-                    TransactionDataGridView.Rows[rowIndex].Cells[10].Value = transaction.UserId;
-                }
-
-                TransactionDataGridView.ReadOnly = true;
             }
             catch (Exception ex)
             {

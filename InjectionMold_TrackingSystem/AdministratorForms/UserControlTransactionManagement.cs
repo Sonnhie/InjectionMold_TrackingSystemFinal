@@ -31,12 +31,10 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         {
             LoadTransactionLogs(currentPageindex, PageSize);
         }
-
         private void EndDatePicker_ValueChanged_1(object sender, EventArgs e)
         {
             LoadTransactionLogs(currentPageindex, PageSize);
         }
-
         private void Next_Click(object sender, EventArgs e)
         {
             TurnNextDataSet();
@@ -46,7 +44,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             if (currentPageindex > 0)
             {
                 currentPageindex--;
-                LoadTransactionLogs(currentPageindex + 1, PageSize);
+                LoadTransactionLogs(currentPageindex, PageSize);
                 Next.Enabled = true;
             }    
         }
@@ -122,7 +120,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             }
             return result;
         }
-
         private void TransactionDataGridView_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
@@ -153,49 +150,53 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 }
             }
         }
-
         public int LoadTransactionLogs(int pageNumber, int pageSize)
         {
-            MessageBox.Show(pageNumber.ToString(), pageSize.ToString());
+           // MessageBox.Show(pageNumber.ToString(), pageSize.ToString());
             try
             {
                 var transactions = transactionUtility.GetAllTransactionLogs(StartDatePicker.Value.Date, EndDatePicker.Value.Date, pageNumber, pageSize);
-                TransactionDataGridView.DataSource = null;
-                DataTable transactionTable = new DataTable();
-                transactionTable.Columns.Add("ID", typeof(string));
-                transactionTable.Columns.Add("Mold Number", typeof(string));
-                transactionTable.Columns.Add("Part Number", typeof(string));
-                transactionTable.Columns.Add("Die Number", typeof(string));
-                transactionTable.Columns.Add("Customer", typeof(string));
-                transactionTable.Columns.Add("Status", typeof(string));
-                transactionTable.Columns.Add("Location", typeof(string));
-                transactionTable.Columns.Add("Shot Count", typeof(string));
-                transactionTable.Columns.Add("Remarks", typeof(string));
-                transactionTable.Columns.Add("Date", typeof(string));
-                transactionTable.Columns.Add("Time", typeof(string));
-
-                foreach (var transaction in transactions)
+                if (transactions != null)
                 {
-                    transactionTable.Rows.Add
-                        (
-                            transaction.Id,
-                            transaction.MoldNumber,
-                            transaction.PartNumber,
-                            transaction.DieNumber,
-                            transaction.Customer,
-                            transaction.Status,
-                            transaction.Location,
-                            transaction.ShotCount,
-                            transaction.Remarks,
-                            transaction.Date.ToString("MM/dd/yyyy"),
-                            transaction.Time  
-                        );
+                    TransactionDataGridView.DataSource = null;
+                    DataTable transactionTable = new DataTable();
+                    transactionTable.Columns.Add("ID", typeof(string));
+                    transactionTable.Columns.Add("Mold Number", typeof(string));
+                    transactionTable.Columns.Add("Part Number", typeof(string));
+                    transactionTable.Columns.Add("Die Number", typeof(string));
+                    transactionTable.Columns.Add("Customer", typeof(string));
+                    transactionTable.Columns.Add("Status", typeof(string));
+                    transactionTable.Columns.Add("Location", typeof(string));
+                    transactionTable.Columns.Add("Shot Count", typeof(string));
+                    transactionTable.Columns.Add("Remarks", typeof(string));
+                    transactionTable.Columns.Add("Date", typeof(string));
+                    transactionTable.Columns.Add("Time", typeof(string));
+
+                    foreach (var transaction in transactions)
+                    {
+                        transactionTable.Rows.Add
+                            (
+                                transaction.Id,
+                                transaction.MoldNumber,
+                                transaction.PartNumber,
+                                transaction.DieNumber,
+                                transaction.Customer,
+                                transaction.Status,
+                                transaction.Location,
+                                transaction.ShotCount,
+                                transaction.Remarks,
+                                transaction.Date.ToString("MM/dd/yyyy"),
+                                transaction.Time
+                            );
+                    }
+                    TransactionDataGridView.DataSource = transactionTable;
+                    TransactionDataGridView.Columns["UpdateData"].Visible = true;
+                    TransactionDataGridView.Columns["DeleteData"].Visible = true;
+                    TransactionDataGridView.Columns["UpdateData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
+                    TransactionDataGridView.Columns["DeleteData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
+                    TransactionDataGridView.ReadOnly = true;
+                    
                 }
-                TransactionDataGridView.DataSource = transactionTable;
-                TransactionDataGridView.Columns["UpdateData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
-                TransactionDataGridView.Columns["DeleteData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
-                TransactionDataGridView.ReadOnly = true;
-                
                 return transactions.Count;
             }
             catch (Exception ex)

@@ -14,7 +14,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
 {
     public partial class UserControlMoldMasterList : UserControl
     {
-        private const int PageSize = 20;
+        private const int PageSize = 50;
         private int currentPageindex = 1;
         private readonly TransactionUtility transactionUtility = new TransactionUtility();
 
@@ -25,7 +25,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             _employeename = employeename;
             _section = section;
             UpdateMold.Enabled = false;
-            LoadUsers(currentPageindex, PageSize);
+            LoadData(currentPageindex, PageSize);
         }
         private void InsertMold()
         {
@@ -54,7 +54,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 if (successInsert)
                 {
                     MessageBox.Show("Mold Successfully Registered.");
-                    LoadUsers(currentPageindex, PageSize);
+                    LoadData(currentPageindex, PageSize);
                 }
                 else
                 {
@@ -101,7 +101,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 if (successInsert)
                 {
                     MessageBox.Show("Mold Successfully Updated.");
-                    LoadUsers(currentPageindex, PageSize);
+                    LoadData(currentPageindex, PageSize);
                     AddNewMold.Enabled = true;
                     UpdateMold.Enabled = false;
                 }
@@ -115,27 +115,48 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 MessageBox.Show("An error occurred while updating the mold: " + ex.Message);
             }
         }
-        public int LoadUsers(int pageNumber, int pageSize)
+        public int LoadData(int pageNumber, int pageSize)
         {
+           // MessageBox.Show(pageNumber.ToString(), pageSize.ToString());
             try
             {
                 TransactionUtility transactionUtility = new TransactionUtility();
                 var mold = transactionUtility.GetMoldData(pageNumber, pageSize);
 
-                TransactionDataGridView.Rows.Clear();
-
-                foreach (var molds in mold)
+                if (mold != null)
                 {
-                    int rowIndex = TransactionDataGridView.Rows.Add();
-                    TransactionDataGridView.Rows[rowIndex].Cells[0].Value = molds.id;
-                    TransactionDataGridView.Rows[rowIndex].Cells[1].Value = molds.MoldNumber;
-                    TransactionDataGridView.Rows[rowIndex].Cells[2].Value = molds.Material;
-                    TransactionDataGridView.Rows[rowIndex].Cells[3].Value = molds.Material_name;
-                    TransactionDataGridView.Rows[rowIndex].Cells[4].Value = molds.DieNumber;
-                    TransactionDataGridView.Rows[rowIndex].Cells[5].Value = molds.Customer;
-                    TransactionDataGridView.Rows[rowIndex].Cells[6].Value = molds.DateCreated;
+                    TransactionDataGridView.DataSource = null;
+                    DataTable transactionTable = new DataTable();
+
+                    transactionTable.Columns.Add("ID", typeof(string));
+                    transactionTable.Columns.Add("Mold Number", typeof(string));
+                    transactionTable.Columns.Add("Part Number", typeof(string));
+                    transactionTable.Columns.Add("Part Name", typeof(string));
+                    transactionTable.Columns.Add("Die Number", typeof(string));
+                    transactionTable.Columns.Add("Customer", typeof(string));
+                    transactionTable.Columns.Add("Date Modified", typeof(string));
+
+                    foreach (var molds in mold)
+                    {
+                        transactionTable.Rows.Add
+                        (
+                            molds.id,
+                            molds.MoldNumber,
+                            molds.Material,
+                            molds.Material_name,
+                            molds.DieNumber,
+                            molds.Customer,
+                            molds.DateCreated
+                        );
+                    };
+                    TransactionDataGridView.DataSource = transactionTable;
+                    TransactionDataGridView.Columns["UpdateData"].Visible = true;
+                    TransactionDataGridView.Columns["DeleteData"].Visible = true;
+                    TransactionDataGridView.Columns["UpdateData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
+                    TransactionDataGridView.Columns["DeleteData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
+                    TransactionDataGridView.ReadOnly = true;
                 }
-                TransactionDataGridView.ReadOnly = true;
+                
                 return mold.Count;
             }
             catch (Exception ex)
@@ -144,7 +165,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 return 0;
             }
         }
-
         private void AddNewMold_Click(object sender, EventArgs e)
         {
             InsertMold();
@@ -155,8 +175,8 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         }
         private void Next_Click(object sender, EventArgs e)
         {
-            int rowsFetched = LoadUsers(currentPageindex + 1, PageSize);
-            if (rowsFetched > 0)
+            int rowsFetched = LoadData(currentPageindex + 1, PageSize);
+            if (rowsFetched > 1)
             {
                 currentPageindex++;
             }
@@ -167,14 +187,13 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         }
         private void Previous_Click(object sender, EventArgs e)
         {
-            if (currentPageindex > 1)
+            if (currentPageindex > 0)
             {
                 currentPageindex--;
-                LoadUsers(currentPageindex, PageSize);
+                LoadData(currentPageindex, PageSize);
                 Next.Enabled = true;
             }
         }
-
         private void ClearButton_Click(object sender, EventArgs e)
         {
             ClearInputs();
@@ -187,20 +206,19 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             DieNumber_ComboBox.SelectedIndex = -1;
             Customer_Combobox.SelectedIndex = -1;
         }
-        private void TransactionDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void TransactionDataGridView_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-            string MoldID = TransactionDataGridView.Rows[e.RowIndex].Cells["id"].Value.ToString();
-
-            if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "Update")
+            string MoldID = TransactionDataGridView.Rows[e.RowIndex].Cells["ID"].Value.ToString();
+            DataGridViewRow selectedRow = TransactionDataGridView.Rows[e.RowIndex];
+            if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "UpdateData")
             {
-                MoldNumber_Txt.Text = TransactionDataGridView.Rows[e.RowIndex].Cells["MoldNumber"].Value.ToString();
-                PartNumber_Txt.Text = TransactionDataGridView.Rows[e.RowIndex].Cells["Material"].Value.ToString();
-                PartName_Txt.Text = TransactionDataGridView.Rows[e.RowIndex].Cells["Material_name"].Value.ToString();
-                Customer_Combobox.Text = TransactionDataGridView.Rows[e.RowIndex].Cells["Customer"].Value.ToString();
-                DieNumber_ComboBox.Text = TransactionDataGridView.Rows[e.RowIndex].Cells["DieNumber"].Value.ToString();
+                MoldNumber_Txt.Text = selectedRow.Cells["Mold Number"].Value.ToString();
+                PartNumber_Txt.Text = selectedRow.Cells["Part Number"].Value.ToString();
+                PartName_Txt.Text = selectedRow.Cells["Part Name"].Value.ToString();
+                Customer_Combobox.Text = selectedRow.Cells["Customer"].Value.ToString();
+                DieNumber_ComboBox.Text = selectedRow.Cells["Die Number"].Value.ToString();
 
 
                 UpdateMold.Enabled = true;
@@ -208,7 +226,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 ClearButton.Enabled = false;
                 lblform.Text = "Update Mold Data";
             }
-            else if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "Delete")
+            else if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "DeleteData")
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this data?", "Delete Mold", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
@@ -218,10 +236,10 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                     if (results)
                     {
                         MessageBox.Show("Deleted Successfully.");
+                        LoadData(currentPageindex, PageSize);
                     }
                 }
             }
         }
-
     }
 }

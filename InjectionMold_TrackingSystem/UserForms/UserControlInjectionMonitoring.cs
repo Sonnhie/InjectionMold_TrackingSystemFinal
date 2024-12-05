@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Zuby.ADGV;
 
 namespace InjectionMold_TrackingSystem.UserForms
 {
@@ -34,24 +35,38 @@ namespace InjectionMold_TrackingSystem.UserForms
             {
                 var transactions = transactionUtility.GetInjectionTransactionLogs(section);
 
-                TransactionDataGridView.Rows.Clear();
-
-                foreach (var transaction in transactions)
+                if (transactions != null)
                 {
-                    int rowIndex = TransactionDataGridView.Rows.Add();
-                    TransactionDataGridView.Rows[rowIndex].Cells[0].Value = transaction.PartNumber;
-                    TransactionDataGridView.Rows[rowIndex].Cells[1].Value = transaction.DieNumber;
-                    TransactionDataGridView.Rows[rowIndex].Cells[2].Value = transaction.Customer;
-                    TransactionDataGridView.Rows[rowIndex].Cells[3].Value = transaction.Status;
-                    TransactionDataGridView.Rows[rowIndex].Cells[4].Value = transaction.Location;
-                    TransactionDataGridView.Rows[rowIndex].Cells[5].Value = transaction.Remarks;
-                    TransactionDataGridView.Rows[rowIndex].Cells[6].Value = transaction.ShotCount;
-                    TransactionDataGridView.Rows[rowIndex].Cells[7].Value = transaction.Date.ToString("MM/dd/yyyy");
-                    TransactionDataGridView.Rows[rowIndex].Cells[8].Value = transaction.Time;
-                    TransactionDataGridView.Rows[rowIndex].Cells[9].Value = transaction.UserId;
-                }
+                    DataTable transactionTable = new DataTable();
+                    transactionTable.Columns.Add("Mold Number", typeof(string));
+                    transactionTable.Columns.Add("Part Number", typeof(string));
+                    transactionTable.Columns.Add("Die Number", typeof(string));
+                    transactionTable.Columns.Add("Customer", typeof(string));
+                    transactionTable.Columns.Add("Status", typeof(string));
+                    transactionTable.Columns.Add("Location", typeof(string));
+                    transactionTable.Columns.Add("Remarks", typeof(string));
+                    transactionTable.Columns.Add("Date", typeof(string));
+                    transactionTable.Columns.Add("Time", typeof(string));
 
-                TransactionDataGridView.ReadOnly = true;
+                    foreach (var transaction in transactions)
+                    {
+                        transactionTable.Rows.Add
+                            (
+                                transaction.MoldNumber,
+                                transaction.PartNumber,
+                                transaction.DieNumber,
+                                transaction.Customer,
+                                transaction.Status,
+                                transaction.Location,
+                                transaction.Remarks,
+                                transaction.Date,
+                                transaction.Time
+                            );
+                    }
+                    TransactionDataGridView.Columns.Clear();
+                    TransactionDataGridView.ReadOnly = true;
+                    TransactionDataGridView.DataSource = transactionTable;   
+                }
             }
             catch (Exception ex)
             {
@@ -59,9 +74,7 @@ namespace InjectionMold_TrackingSystem.UserForms
             }
         }
         private void StoreRecord()
-        {
-            
-            
+        {      
             if (string.IsNullOrWhiteSpace(Remarks_txt.Text))
             {
                 MessageBox.Show("Remarks cannot be empty. Please enter a remark.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);

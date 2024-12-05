@@ -82,24 +82,30 @@ namespace InjectionMold_TrackingSystem.UserForms
             {
                 var transactions = TransactionUtility.GetLogs(section);
 
-                if (transactions == null || transactions.Count == 0)
+                if (transactions != null)
                 {
-                    MessageBox.Show("No data found for the selected date range.");
-                }
-
-                TransactionDataGridView.Rows.Clear();
-
-                foreach (var transaction in transactions)
-                {
-                    int rowIndex = TransactionDataGridView.Rows.Add();
-                    TransactionDataGridView.Rows[rowIndex].Cells[0].Value = transaction.Date.ToString("MM/dd/yyyy");
-                    TransactionDataGridView.Rows[rowIndex].Cells[1].Value = transaction.Time;
-                    TransactionDataGridView.Rows[rowIndex].Cells[2].Value = transaction.Section;
-                    TransactionDataGridView.Rows[rowIndex].Cells[3].Value = transaction.Content;
-                    TransactionDataGridView.Rows[rowIndex].Cells[4].Value = transaction.UserId;
-                }
-
-                TransactionDataGridView.ReadOnly = true;
+                    DataTable transactionTable = new DataTable();
+                    transactionTable.Columns.Add("Date", typeof(string));
+                    transactionTable.Columns.Add("Time", typeof(string));
+                    transactionTable.Columns.Add("Section", typeof(string));
+                    transactionTable.Columns.Add("Content", typeof(string));
+                    transactionTable.Columns.Add("User ID", typeof(string));
+                    
+                    foreach (var transaction in transactions)
+                    {
+                        transactionTable.Rows.Add
+                            (
+                                transaction.Date.ToString("MM/dd/yyyy"),
+                                transaction.Time,
+                                transaction.Section,
+                                transaction.Content,
+                                transaction.UserId
+                            );
+                    }
+                    TransactionDataGridView.Columns.Clear();
+                    TransactionDataGridView.ReadOnly = true;
+                    TransactionDataGridView.DataSource = transactionTable;
+                }      
             }
             catch (Exception ex)
             {
