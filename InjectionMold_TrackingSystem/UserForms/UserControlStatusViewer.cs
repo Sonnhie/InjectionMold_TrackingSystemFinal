@@ -103,8 +103,7 @@ namespace InjectionMold_TrackingSystem.UserForms
 
                     try
                     {
-                        CsvExportUtility csvExportUtility = new CsvExportUtility();
-                        await csvExportUtility.ExportDataToCsvAsync(dataTable, filePath, progress);
+                        await CsvExportUtility.ExportDataToCsvAsync(dataTable, filePath, progress);
                         MessageBox.Show("Export completed successfully!");
                         progressBar1.Value = 0;
                         progressBar1.Visible = false;

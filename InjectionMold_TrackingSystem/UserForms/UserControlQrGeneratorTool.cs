@@ -13,9 +13,6 @@ namespace InjectionMold_TrackingSystem.UserForms
 {
     public partial class UserControlQrGeneratorTool : UserControl
     {
-        
-        private readonly UserControlUtility controlUtility = new UserControlUtility();
-        private readonly UserControlPrintLogs printLogs = new UserControlPrintLogs();
         private string _section;
         private string _employeeName;
 
@@ -33,11 +30,11 @@ namespace InjectionMold_TrackingSystem.UserForms
             {
                 case "Injection":
                     UserControlMachineQRGenerator machineQRGenerator = new UserControlMachineQRGenerator(_section, employee);
-                    controlUtility.DisplayUserControl(machineQRGenerator, QRPanel);
+                    UserControlUtility.DisplayUserControl(machineQRGenerator, QRPanel);
                     break;
                 case "Mold":
                     UserControlMoldQRGenerator qRGenerator = new UserControlMoldQRGenerator(_section, employee);
-                    controlUtility.DisplayUserControl(qRGenerator, QRPanel);
+                    UserControlUtility.DisplayUserControl(qRGenerator, QRPanel);
                     break;
             }
         }

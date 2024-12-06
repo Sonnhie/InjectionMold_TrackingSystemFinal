@@ -15,9 +15,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
 {
     public partial class UserControlUserManagement : UserControl
     {
-        
-        UserControlUtility controlUtility = new UserControlUtility();
-        UserManagementUtility userManagementUtility = new UserManagementUtility();
+        private readonly UserManagementUtility userManagementUtility = new UserManagementUtility();
 
         private string _section, _employee;
 
@@ -32,7 +30,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         private void RegisterUser_Click(object sender, EventArgs e)
         {
             UserControlAddUser addUser = new UserControlAddUser(this);
-            controlUtility.DisplayUserControl(addUser, panel2);
+            UserControlUtility.DisplayUserControl(addUser, panel2);
         }
         private void TransactionDataGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {

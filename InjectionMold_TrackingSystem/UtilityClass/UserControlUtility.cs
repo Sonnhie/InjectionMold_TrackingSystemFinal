@@ -9,11 +9,11 @@ namespace InjectionMold_TrackingSystem.UtilityClass
 {
     public class UserControlUtility
     {
-        public void DisplayUserControl(UserControl userControl, Panel panel)
+      public static void DisplayUserControl(UserControl userControl, Panel panel)
         {
-            panel.Controls.Clear();
-            panel.Controls.Add(userControl);
-            userControl.Dock = DockStyle.Fill;
+          panel.Controls.Clear();
+          panel.Controls.Add(userControl);
+          userControl.Dock = DockStyle.Fill;
         }
     }
 }

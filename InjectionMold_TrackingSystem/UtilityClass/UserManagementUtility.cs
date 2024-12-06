@@ -21,7 +21,6 @@ namespace InjectionMold_TrackingSystem.UtilityClass
     public class UserManagementUtility
     {
         private readonly DbConnection _connection;
-
         public UserManagementUtility()
         {
             _connection = new DbConnection();

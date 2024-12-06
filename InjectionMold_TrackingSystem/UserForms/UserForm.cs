@@ -15,8 +15,6 @@ namespace InjectionMold_TrackingSystem.UserForms
 {
     public partial class UserForm : Form
     {
-        
-        private readonly UserControlUtility userControlUtility = new UserControlUtility();
         private readonly UserControlStatusViewer userControlStatusViewer = new UserControlStatusViewer();
         private string _section;
         private string _employeename;
@@ -29,7 +27,7 @@ namespace InjectionMold_TrackingSystem.UserForms
             _userID = userID;
             SetbuttonAccess();
             UserControlUserDashboard userControlUserDashboard = new UserControlUserDashboard(section);
-            userControlUtility.DisplayUserControl(userControlUserDashboard, panel3);
+            UserControlUtility.DisplayUserControl(userControlUserDashboard, panel3);
             
         }
         private void ExitApp_Click(object sender, EventArgs e)
@@ -65,26 +63,26 @@ namespace InjectionMold_TrackingSystem.UserForms
         private void InjectionMonitoring_Click(object sender, EventArgs e)
         {
             UserControlInjectionMonitoring userControlInjectionMonitoring = new UserControlInjectionMonitoring(_section, _employeename);
-            userControlUtility.DisplayUserControl(userControlInjectionMonitoring, panel3);
+            UserControlUtility.DisplayUserControl(userControlInjectionMonitoring, panel3);
         }
         private void Dashboard_Click(object sender, EventArgs e)
         {
            UserControlUserDashboard userControlUserDashboard = new UserControlUserDashboard(_section);
-           userControlUtility.DisplayUserControl(userControlUserDashboard, panel3);
+           UserControlUtility.DisplayUserControl(userControlUserDashboard, panel3);
         }
         private void MoldMonitoring_Click(object sender, EventArgs e)
         {
             UserControlMoldMonitoring userControlMoldMonitoring = new UserControlMoldMonitoring(_section, _employeename);
-            userControlUtility.DisplayUserControl(userControlMoldMonitoring, panel3);
+            UserControlUtility.DisplayUserControl(userControlMoldMonitoring, panel3);
         }
         private void Transaction_Click(object sender, EventArgs e)
         {
            UserControlTransactionHistory userControlTransactionHistory = new UserControlTransactionHistory(_section, _employeename);
-           userControlUtility.DisplayUserControl(userControlTransactionHistory, panel3);
+           UserControlUtility.DisplayUserControl(userControlTransactionHistory, panel3);
         }
         private void StatusViewer_Click(object sender, EventArgs e)
         {
-           userControlUtility.DisplayUserControl(userControlStatusViewer, panel3);
+           UserControlUtility.DisplayUserControl(userControlStatusViewer, panel3);
         }
         private void QrGenerator_Click(object sender, EventArgs e)
         {
@@ -92,7 +90,7 @@ namespace InjectionMold_TrackingSystem.UserForms
             //pinCode.ShowDialog();
 
             UserControlQrGeneratorTool tool = new UserControlQrGeneratorTool(_section, _employeename);
-            userControlUtility.DisplayUserControl(tool, panel3);
+            UserControlUtility.DisplayUserControl(tool, panel3);
         }
     }
 }

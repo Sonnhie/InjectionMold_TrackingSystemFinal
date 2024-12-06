@@ -58,20 +58,7 @@
             this.PartNumber = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Moldno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Partno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dieno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Customers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoldStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoldLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateTransact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeTransact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Update = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label3 = new System.Windows.Forms.Label();;
             this.UpdateData = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteData = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
@@ -446,58 +433,6 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Transaction History";
             // 
-            // id
-            // 
-            this.id.Name = "id";
-            // 
-            // Moldno
-            // 
-            this.Moldno.Name = "Moldno";
-            // 
-            // Partno
-            // 
-            this.Partno.Name = "Partno";
-            // 
-            // Dieno
-            // 
-            this.Dieno.Name = "Dieno";
-            // 
-            // Customers
-            // 
-            this.Customers.Name = "Customers";
-            // 
-            // MoldStatus
-            // 
-            this.MoldStatus.Name = "MoldStatus";
-            // 
-            // MoldLocation
-            // 
-            this.MoldLocation.Name = "MoldLocation";
-            // 
-            // Count
-            // 
-            this.Count.Name = "Count";
-            // 
-            // Remark
-            // 
-            this.Remark.Name = "Remark";
-            // 
-            // DateTransact
-            // 
-            this.DateTransact.Name = "DateTransact";
-            // 
-            // TimeTransact
-            // 
-            this.TimeTransact.Name = "TimeTransact";
-            // 
-            // Update
-            // 
-            this.Update.Name = "Update";
-            // 
-            // Delete
-            // 
-            this.Delete.Name = "Delete";
-            // 
             // UpdateData
             // 
             this.UpdateData.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -570,20 +505,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker EndDatePicker;
         private System.Windows.Forms.DateTimePicker StartDatePicker;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Moldno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Partno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dieno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Customers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MoldStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MoldLocation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Count;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Remark;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateTransact;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimeTransact;
-        private System.Windows.Forms.DataGridViewImageColumn Updates;
-        private System.Windows.Forms.DataGridViewImageColumn Delete;
-        private System.Windows.Forms.DataGridViewImageColumn Update;
         private Zuby.ADGV.AdvancedDataGridView TransactionDataGridView;
         private System.Windows.Forms.DataGridViewImageColumn UpdateData;
         private System.Windows.Forms.DataGridViewImageColumn DeleteData;

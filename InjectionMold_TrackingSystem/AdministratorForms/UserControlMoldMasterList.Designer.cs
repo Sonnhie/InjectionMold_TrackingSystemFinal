@@ -51,15 +51,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             this.label6 = new System.Windows.Forms.Label();
             this.lblform = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoldNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Material = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Material_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DieNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Update = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.UpdateData = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteData = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
@@ -337,42 +328,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             this.label3.TabIndex = 2;
             this.label3.Text = "Mold Master List";
             // 
-            // id
-            // 
-            this.id.Name = "id";
-            // 
-            // MoldNumber
-            // 
-            this.MoldNumber.Name = "MoldNumber";
-            // 
-            // Material
-            // 
-            this.Material.Name = "Material";
-            // 
-            // Material_name
-            // 
-            this.Material_name.Name = "Material_name";
-            // 
-            // DieNumber
-            // 
-            this.DieNumber.Name = "DieNumber";
-            // 
-            // Customer
-            // 
-            this.Customer.Name = "Customer";
-            // 
-            // Column5
-            // 
-            this.Column5.Name = "Column5";
-            // 
-            // Update
-            // 
-            this.Update.Name = "Update";
-            // 
-            // Delete
-            // 
-            this.Delete.Name = "Delete";
-            // 
             // UpdateData
             // 
             this.UpdateData.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -418,7 +373,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
-       // private ADGV.AdvancedDataGridView TransactionDataGridView;
         public System.Windows.Forms.Button AddNewMold;
         public System.Windows.Forms.Button ClearButton;
         public System.Windows.Forms.Button UpdateMold;
@@ -435,16 +389,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         public System.Windows.Forms.Label lblform;
         public System.Windows.Forms.Button Previous;
         public System.Windows.Forms.Button Next;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MoldNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Material;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Material_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DieNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewImageColumn Updates;
-        private System.Windows.Forms.DataGridViewImageColumn Delete;
-        private System.Windows.Forms.DataGridViewImageColumn Update;
         private Zuby.ADGV.AdvancedDataGridView TransactionDataGridView;
         private System.Windows.Forms.DataGridViewImageColumn UpdateData;
         private System.Windows.Forms.DataGridViewImageColumn DeleteData;

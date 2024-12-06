@@ -11,7 +11,7 @@ namespace InjectionMold_TrackingSystem.UtilityClass
 {
     public class CsvExportUtility
     {
-        public async Task ExportDataToCsvAsync(DataTable dataTable, string FilePath, IProgress<int> progress)
+        public static async Task ExportDataToCsvAsync(DataTable dataTable, string FilePath, IProgress<int> progress)
         {
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial; ;
 

@@ -13,9 +13,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
 {
     public partial class AdminDashboard : Form
     {
-        private readonly UserControlMoldLocation masterLocation = new UserControlMoldLocation(); 
-        private readonly UserControlUtility userControlUtility = new UserControlUtility();
-
         private readonly string _section;
         private readonly string _employeename;
 
@@ -23,7 +20,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         {
             InitializeComponent();
             UserControlDashboard userControl = new UserControlDashboard(section, employeename);
-            userControlUtility.DisplayUserControl(userControl, panel3);
+            UserControlUtility.DisplayUserControl(userControl, panel3);
             _section = section;
             _employeename = employeename;
             MoldStatusManagement.Enabled = false;
@@ -46,26 +43,26 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         private void Dashboard_Click(object sender, EventArgs e)
         {
             UserControlDashboard userControl = new UserControlDashboard(_section, _employeename);
-            userControlUtility.DisplayUserControl(userControl, panel3);
+            UserControlUtility.DisplayUserControl(userControl, panel3);
         }
         private void UserManagement_Click(object sender, EventArgs e)
         {
             UserControlUserManagement user = new UserControlUserManagement(_section, _employeename);
-            userControlUtility.DisplayUserControl(user, panel3);
+            UserControlUtility.DisplayUserControl(user, panel3);
         }
         private void MoldMasterlist_Click(object sender, EventArgs e)
         {
             UserControlMoldMasterList masterList = new UserControlMoldMasterList(_section, _employeename);
-            userControlUtility.DisplayUserControl(masterList, panel3);
+            UserControlUtility.DisplayUserControl(masterList, panel3);
         }
         private void LocationManagement_Click(object sender, EventArgs e)
         {
-            userControlUtility.DisplayUserControl(masterLocation, panel3);
+            //UserControlUtility.DisplayUserControl(masterLocation, panel3);
         }
         private void TransactionHistory_Click(object sender, EventArgs e)
         {
             UserControlTransactionManagement transactionManagement = new UserControlTransactionManagement(_section, _employeename);
-            userControlUtility.DisplayUserControl(transactionManagement, panel3);
+            UserControlUtility.DisplayUserControl(transactionManagement, panel3);
         }
     }
 }

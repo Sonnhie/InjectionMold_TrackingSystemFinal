@@ -13,10 +13,7 @@ namespace InjectionMold_TrackingSystem.UserForms
 {
     public partial class UserControlMoldMonitoring : UserControl
     {
-        private readonly UserControlUtility userControl = new UserControlUtility();
         private readonly MoldDataManagementUtility MoldDataManagementUtility = new MoldDataManagementUtility();
-        
-        private readonly UserControlUtility userControlUtility = new UserControlUtility();
         private readonly TransactionUtility transactionUtility = new TransactionUtility();
 
         private string _section;
@@ -152,7 +149,7 @@ namespace InjectionMold_TrackingSystem.UserForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+              MessageBox.Show("Error: " + ex.Message);
             }
 
         }

@@ -42,9 +42,6 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Update = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Reset = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.UpdateData = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteUser = new System.Windows.Forms.DataGridViewImageColumn();
             this.ResetPass = new System.Windows.Forms.DataGridViewImageColumn();
@@ -160,19 +157,7 @@
             // Column8
             // 
             this.Column8.Name = "Column8";
-            // 
-            // Update
-            // 
-            this.Update.Name = "Update";
-            // 
-            // Reset
-            // 
-            this.Reset.Name = "Reset";
-            // 
-            // Delete
-            // 
-            this.Delete.Name = "Delete";
-            // 
+            //  
             // UpdateData
             // 
             this.UpdateData.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -230,16 +215,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button RegisterUser;
-        private System.Windows.Forms.DataGridViewImageColumn Updates;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewImageColumn Update;
-        private System.Windows.Forms.DataGridViewImageColumn Reset;
-        private System.Windows.Forms.DataGridViewImageColumn Delete;
         private Zuby.ADGV.AdvancedDataGridView TransactionDataGridView;
         private System.Windows.Forms.DataGridViewImageColumn UpdateData;
         private System.Windows.Forms.DataGridViewImageColumn DeleteUser;
