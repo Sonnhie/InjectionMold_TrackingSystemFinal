@@ -16,7 +16,6 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         private readonly string _section;
         private readonly string _employeename;
         private readonly UserControlMoldLocation _location = new UserControlMoldLocation();
-
         public AdminDashboard(string section, string employeename)
         {
             InitializeComponent();

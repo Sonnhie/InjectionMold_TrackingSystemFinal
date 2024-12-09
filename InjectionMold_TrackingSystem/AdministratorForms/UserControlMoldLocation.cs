@@ -21,11 +21,13 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         private Image qrImage;
         private PrintDocument _printDocument;
         public bool _ShowPrintDocument = false;
+
         public UserControlMoldLocation()
         {
             InitializeComponent();
             LoadLocationList();
             label2.Visible = false;
+            label1.Visible = false;
         }
         public void LoadLocationList()
         {
@@ -87,6 +89,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 DialogResult result = MessageBox.Show("Print Location label?", "Print Label", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
+                    label1.Visible = true;
                     PrintDocument();
                 }
             }

@@ -17,7 +17,6 @@ namespace InjectionMold_TrackingSystem.UserForms
         {
             InitializeComponent();
         }
-
         private void submit_btn_Click(object sender, EventArgs e)
         {
             PrintUtility printUtility = new PrintUtility();

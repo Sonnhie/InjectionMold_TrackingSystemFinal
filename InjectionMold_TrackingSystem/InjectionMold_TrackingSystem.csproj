@@ -149,12 +149,6 @@
     <Compile Include="AdministratorForms\UserControlTransactionManagement.Designer.cs">
       <DependentUpon>UserControlTransactionManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdministratorForms\UserControlUpdateLocation.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="AdministratorForms\UserControlUpdateLocation.Designer.cs">
-      <DependentUpon>UserControlUpdateLocation.cs</DependentUpon>
-    </Compile>
     <Compile Include="AdministratorForms\UserControlUpdateMoldData.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -306,9 +300,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdministratorForms\UserControlTransactionManagement.resx">
       <DependentUpon>UserControlTransactionManagement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdministratorForms\UserControlUpdateLocation.resx">
-      <DependentUpon>UserControlUpdateLocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdministratorForms\UserControlUpdateMoldData.resx">
       <DependentUpon>UserControlUpdateMoldData.cs</DependentUpon>

@@ -17,10 +17,8 @@ namespace InjectionMold_TrackingSystem.UserForms
        
         private readonly TransactionUtility transactionUtility = new TransactionUtility();
         private readonly MoldDataManagementUtility moldDataManagementUtility = new MoldDataManagementUtility();
-        
         private readonly string _section;
         private readonly string _employeeName;
-
         public UserControlInjectionMonitoring(string section, string employee)
         {
             InitializeComponent();
