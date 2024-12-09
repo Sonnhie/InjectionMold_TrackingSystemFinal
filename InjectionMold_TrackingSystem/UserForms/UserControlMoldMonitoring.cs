@@ -32,10 +32,25 @@ namespace InjectionMold_TrackingSystem.UserForms
         {
             if (e.KeyCode == Keys.Enter)
             {
+                var parseData = ScanData.Text.Split('/');
                 string ScannedData = ScanData.Text;
-                OnQRCodeScanned(ScannedData);
-                ScanData.Clear();
+                if (parseData.Length == 4)
+                {
+                    OnQRCodeScanned(ScannedData);
+                    
+                }
+                else if (parseData.Length == 2)
+                {
+                    OnQRCodeLocation(ScannedData);
+                    Location_cmb.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Unrecognized QR code format.");
+                }
 
+                ScanData.Clear();
+                ScanData.Focus();
                 e.SuppressKeyPress = true;
             }
         }
@@ -47,7 +62,7 @@ namespace InjectionMold_TrackingSystem.UserForms
             Customer_txt.Text = string.Empty;
             Remarks_txt.Text = string.Empty;
             Status_cmb.SelectedIndex = -1;
-            Location_cmb.SelectedIndex = -1;
+            Location_cmb.Text = string.Empty;
         }
         private void StoreRecord()
         {
@@ -65,7 +80,7 @@ namespace InjectionMold_TrackingSystem.UserForms
                     DieNumber = DieNumber_txt.Text,
                     Customer = Customer_txt.Text,
                     Status = Status_cmb.SelectedItem?.ToString(),
-                    Location = Location_cmb.SelectedItem?.ToString(),
+                    Location = Location_cmb.Text,
                     Remarks = Remarks_txt.Text,
                     Date = DateTime.Now,
                     Time = DateTime.Now.ToString("HH:mm:ss"),
@@ -168,6 +183,12 @@ namespace InjectionMold_TrackingSystem.UserForms
             ClearInputs();
             ScanData.Focus();
             PartNumber_txt.ReadOnly = true;
+        }
+        private void OnQRCodeLocation(string qrData)
+        {
+            QRData ScannedData = new QRData(qrData);
+
+            Location_cmb.Text = ScannedData.MachineNumber;
         }
     }
 }

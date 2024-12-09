@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.TransactionDataGridView = new Zuby.ADGV.AdvancedDataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,7 +44,6 @@
             this.ScanData = new System.Windows.Forms.TextBox();
             this.ScanDatalbl = new System.Windows.Forms.Label();
             this.SaveData = new System.Windows.Forms.Button();
-            this.Location_cmb = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.Remarks_txt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -59,10 +59,10 @@
             this.PartNumber_txt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.TransactionDataGridView = new Zuby.ADGV.AdvancedDataGridView();
+            this.Location_cmb = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
-            this.InputPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionDataGridView)).BeginInit();
+            this.InputPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -73,6 +73,34 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(851, 360);
             this.panel1.TabIndex = 2;
+            // 
+            // TransactionDataGridView
+            // 
+            this.TransactionDataGridView.AllowUserToAddRows = false;
+            this.TransactionDataGridView.AllowUserToDeleteRows = false;
+            this.TransactionDataGridView.AllowUserToResizeColumns = false;
+            this.TransactionDataGridView.AllowUserToResizeRows = false;
+            this.TransactionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.TransactionDataGridView.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.TransactionDataGridView.EnableHeadersVisualStyles = false;
+            this.TransactionDataGridView.FilterAndSortEnabled = true;
+            this.TransactionDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.TransactionDataGridView.Location = new System.Drawing.Point(17, 42);
+            this.TransactionDataGridView.MaxFilterButtonImageHeight = 23;
+            this.TransactionDataGridView.Name = "TransactionDataGridView";
+            this.TransactionDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TransactionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.TransactionDataGridView.Size = new System.Drawing.Size(815, 295);
+            this.TransactionDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.TransactionDataGridView.TabIndex = 2;
             // 
             // label1
             // 
@@ -118,10 +146,10 @@
             // 
             // InputPanel
             // 
+            this.InputPanel.Controls.Add(this.Location_cmb);
             this.InputPanel.Controls.Add(this.ScanData);
             this.InputPanel.Controls.Add(this.ScanDatalbl);
             this.InputPanel.Controls.Add(this.SaveData);
-            this.InputPanel.Controls.Add(this.Location_cmb);
             this.InputPanel.Controls.Add(this.label8);
             this.InputPanel.Controls.Add(this.Remarks_txt);
             this.InputPanel.Controls.Add(this.label7);
@@ -172,21 +200,6 @@
             this.SaveData.Text = "Save";
             this.SaveData.UseVisualStyleBackColor = false;
             this.SaveData.Click += new System.EventHandler(this.SaveData_Click);
-            // 
-            // Location_cmb
-            // 
-            this.Location_cmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Location_cmb.FormattingEnabled = true;
-            this.Location_cmb.Items.AddRange(new object[] {
-            "Mold Storage Area (Rack)",
-            "Mold Outgoing Area",
-            "Mold Receiving Area",
-            "Mold Maintenance Area",
-            "Mold Storage Area (Floor)"});
-            this.Location_cmb.Location = new System.Drawing.Point(581, 98);
-            this.Location_cmb.Name = "Location_cmb";
-            this.Location_cmb.Size = new System.Drawing.Size(213, 25);
-            this.Location_cmb.TabIndex = 93;
             // 
             // label8
             // 
@@ -336,33 +349,13 @@
             this.label9.TabIndex = 79;
             this.label9.Text = "Data Entry";
             // 
-            // TransactionDataGridView
+            // Location_cmb
             // 
-            this.TransactionDataGridView.AllowUserToAddRows = false;
-            this.TransactionDataGridView.AllowUserToDeleteRows = false;
-            this.TransactionDataGridView.AllowUserToResizeColumns = false;
-            this.TransactionDataGridView.AllowUserToResizeRows = false;
-            this.TransactionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.TransactionDataGridView.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.TransactionDataGridView.EnableHeadersVisualStyles = false;
-            this.TransactionDataGridView.FilterAndSortEnabled = true;
-            this.TransactionDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.Location = new System.Drawing.Point(17, 42);
-            this.TransactionDataGridView.MaxFilterButtonImageHeight = 23;
-            this.TransactionDataGridView.Name = "TransactionDataGridView";
-            this.TransactionDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TransactionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.TransactionDataGridView.Size = new System.Drawing.Size(815, 295);
-            this.TransactionDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.TabIndex = 2;
+            this.Location_cmb.Location = new System.Drawing.Point(581, 101);
+            this.Location_cmb.Name = "Location_cmb";
+            this.Location_cmb.ReadOnly = true;
+            this.Location_cmb.Size = new System.Drawing.Size(213, 22);
+            this.Location_cmb.TabIndex = 98;
             // 
             // UserControlMoldMonitoring
             // 
@@ -376,9 +369,9 @@
             this.Load += new System.EventHandler(this.UserControlMoldMonitoring_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TransactionDataGridView)).EndInit();
             this.InputPanel.ResumeLayout(false);
             this.InputPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TransactionDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -400,7 +393,6 @@
         private System.Windows.Forms.TextBox ScanData;
         private System.Windows.Forms.Label ScanDatalbl;
         private System.Windows.Forms.Button SaveData;
-        private System.Windows.Forms.ComboBox Location_cmb;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox Remarks_txt;
         private System.Windows.Forms.Label label7;
@@ -417,5 +409,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
         private Zuby.ADGV.AdvancedDataGridView TransactionDataGridView;
+        private System.Windows.Forms.TextBox Location_cmb;
     }
 }

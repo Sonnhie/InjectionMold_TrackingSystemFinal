@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -223,6 +224,137 @@ namespace InjectionMold_TrackingSystem.UtilityClass
                 Console.WriteLine("Error retrieving mold data: " + ex.Message);
             }
             return null;
+        }
+        public void MoldLocationComboxBox(ComboBox comboBox)
+        {
+            try
+            {
+                string Query = "select distinct LocationCode from MoldLocation";
+                using(SqlConnection conn = connection.GetConnection())
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(Query, conn))
+                    {
+                        using(SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            DataTable table = new DataTable();
+                            table.Load(reader);
+
+                            comboBox.DataSource = table;
+                            comboBox.DisplayMember = "LocationCode";
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        public List<MoldLocation> GetLocationList()
+        {
+            List<MoldLocation> list = new List<MoldLocation>();
+            try
+            {
+                string Query = "select Id, LocationCode, LocationDescription from MoldLocation";
+                using(SqlConnection conn = connection.GetConnection())
+                {
+                    conn.Open();
+                    using(SqlCommand cmd = new SqlCommand(Query, conn))
+                    {
+                        using(SqlDataReader r = cmd.ExecuteReader())
+                        {
+                            while (r.Read())
+                            {
+                                MoldLocation moldLocation = new MoldLocation
+                                {
+                                    ID = r["Id"].ToString() ?? string.Empty,
+                                    LocationCode = r["LocationCode"].ToString() ?? string.Empty,
+                                    LocationDescription = r["LocationDescription"].ToString() ?? string.Empty,
+                                };
+                                list.Add(moldLocation);
+                            }
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return list;
+        }
+        public bool IsDuplicateLocation(MoldLocation location)
+        {
+            bool isDuplicate = false;
+            try
+            {
+                string Query = "select count(*) from MoldLocation where LocationCode COLLATE Latin1_General_BIN = @locationCode " +
+                               "and LocationDescription COLLATE Latin1_General_BIN = @description";
+               using(SqlConnection conn = connection.GetConnection())
+                {
+                    conn.Open();
+                    using( SqlCommand cmd = new SqlCommand(Query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@locationCode", location.LocationCode);
+                        cmd.Parameters.AddWithValue("@description", location.LocationDescription);
+                        int result = Convert.ToInt32(cmd.ExecuteScalar());
+                        isDuplicate = result > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+            return isDuplicate;
+        }
+        public bool AddNewLocation(MoldLocation location)
+        {
+            bool isRecord = false;
+            try
+            {
+                string Query = "insert into MoldLocation (LocationCode, LocationDescription) values (@LocationCode, @LocationDescription)";
+                using(SqlConnection con = connection.GetConnection())
+                {
+                    con.Open();
+                    using(SqlCommand cmd = new SqlCommand(Query, con))
+                    {
+                      cmd.Parameters.AddWithValue("@LocationCode", location.LocationCode);
+                      cmd.Parameters.AddWithValue("@LocationDescription", location.LocationDescription);
+                      int result = cmd.ExecuteNonQuery();
+                      isRecord = result > 0;
+                    }
+                }
+            }
+            catch( Exception ex )
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return isRecord;
+        }
+        public bool DeleteLocation(string ID)
+        {
+            bool isRecord = false;
+            try
+            {
+                string Query = "Delete from MoldLocation where Id = @id";
+                using(SqlConnection con = connection.GetConnection())
+                {
+                    con.Open();
+                    using(SqlCommand  command = new SqlCommand(Query, con))
+                    {
+                        command.Parameters.AddWithValue("@Id", ID);
+                        int result = command.ExecuteNonQuery();
+                        isRecord = result > 0;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return isRecord;
         }
     }
 }

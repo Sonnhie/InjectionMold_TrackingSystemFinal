@@ -13,7 +13,7 @@ namespace InjectionMold_TrackingSystem.UtilityClass
 {
     public class Mold 
     {
-        public string id {  get; set; }
+        public string ID {  get; set; }
         public string MoldNumber { get; set; }
         public string Material { get; set; }
         public string Material_name { get; set; }
@@ -209,7 +209,7 @@ namespace InjectionMold_TrackingSystem.UtilityClass
                             {
                                 Mold moldData = new Mold
                                 {
-                                    id = reader["id"].ToString(),
+                                    ID = reader["id"].ToString(),
                                     MoldNumber = reader["Mold_no"].ToString(),
                                     Material = reader["Material"].ToString(),
                                     Material_name = reader["Material_Name"].ToString(),
@@ -232,7 +232,6 @@ namespace InjectionMold_TrackingSystem.UtilityClass
         public List<TransactionData> GetInjectionTransactionLogs(string section)
         {
             List<TransactionData> transactions = new List<TransactionData>();
-
             try
             {
                 using(SqlConnection conn = connection.GetConnection())
@@ -254,16 +253,16 @@ namespace InjectionMold_TrackingSystem.UtilityClass
                             {
                                 TransactionData transactionData = new TransactionData
                                 {
-                                    PartNumber = reader["partnumber"]?.ToString() ?? string.Empty,
-                                    DieNumber = reader["dienumber"]?.ToString() ?? string.Empty,
-                                    Customer = reader["customer"]?.ToString() ?? string.Empty,
-                                    Location = reader["location"]?.ToString() ?? string.Empty,
-                                    Remarks = reader["remarks"]?.ToString() ?? string.Empty,
-                                    Status = reader["status"]?.ToString() ?? string.Empty,
-                                    ShotCount = reader["shot_count"]?.ToString() ?? string.Empty,
-                                    Date = reader["date"] != DBNull.Value ? Convert.ToDateTime(reader["date"]) : DateTime.MinValue,
-                                    Time = reader["time"]?.ToString() ?? string.Empty,
-                                    UserId = reader["in_charge"]?.ToString()
+                                   PartNumber = reader["partnumber"]?.ToString() ?? string.Empty,
+                                   DieNumber = reader["dienumber"]?.ToString() ?? string.Empty,
+                                   Customer = reader["customer"]?.ToString() ?? string.Empty,
+                                   Location = reader["location"]?.ToString() ?? string.Empty,
+                                   Remarks = reader["remarks"]?.ToString() ?? string.Empty,
+                                   Status = reader["status"]?.ToString() ?? string.Empty,
+                                   ShotCount = reader["shot_count"]?.ToString() ?? string.Empty,
+                                   Date = reader["date"] != DBNull.Value ? Convert.ToDateTime(reader["date"]) : DateTime.MinValue,
+                                   Time = reader["time"]?.ToString() ?? string.Empty,
+                                   UserId = reader["in_charge"]?.ToString()
                                 };
                                 transactions.Add(transactionData);
                             }
@@ -329,7 +328,6 @@ namespace InjectionMold_TrackingSystem.UtilityClass
         public List<TransactionData> GetAllTransactionLogs(DateTime StartDate, DateTime EndDate, int pageNumber, int pageSize)
         {
             List<TransactionData> transactions = new List<TransactionData>();
-
             try
             {
                 using (SqlConnection conn = connection.GetConnection())
@@ -434,16 +432,16 @@ namespace InjectionMold_TrackingSystem.UtilityClass
                             {
                                 TransactionData transactionData = new TransactionData
                                 {
-                                    MoldNumber = reader["moldnumber"]?.ToString() ?? string.Empty,
-                                    PartNumber = reader["partnumber"]?.ToString() ?? string.Empty,
-                                    DieNumber = reader["dienumber"]?.ToString() ?? string.Empty,
-                                    Customer = reader["customer"]?.ToString() ?? string.Empty,
-                                    Location = reader["location"]?.ToString() ?? string.Empty,
-                                    Remarks = reader["remarks"]?.ToString() ?? string.Empty,
-                                    Status = reader["status"]?.ToString() ?? string.Empty,
-                                    ShotCount = reader["shot_count"]?.ToString() ?? string.Empty,
-                                    Date = reader["date"] != DBNull.Value ? Convert.ToDateTime(reader["date"]) : DateTime.MinValue,
-                                    Time = reader["time"]?.ToString() ?? string.Empty,
+                                  MoldNumber = reader["moldnumber"]?.ToString() ?? string.Empty,
+                                  PartNumber = reader["partnumber"]?.ToString() ?? string.Empty,
+                                  DieNumber = reader["dienumber"]?.ToString() ?? string.Empty,
+                                  Customer = reader["customer"]?.ToString() ?? string.Empty,
+                                  Location = reader["location"]?.ToString() ?? string.Empty,
+                                  Remarks = reader["remarks"]?.ToString() ?? string.Empty,
+                                  Status = reader["status"]?.ToString() ?? string.Empty,
+                                  ShotCount = reader["shot_count"]?.ToString() ?? string.Empty,
+                                  Date = reader["date"] != DBNull.Value ? Convert.ToDateTime(reader["date"]) : DateTime.MinValue,
+                                  Time = reader["time"]?.ToString() ?? string.Empty,
                                 };
                                 transactions.Add(transactionData);
                             }
@@ -574,7 +572,7 @@ namespace InjectionMold_TrackingSystem.UtilityClass
                         {
                             using (SqlCommand cmd = new SqlCommand(Query, conn, transact))
                             {
-                                cmd.Parameters.AddWithValue("@id", mold.id);
+                                cmd.Parameters.AddWithValue("@id", mold.ID);
                                 cmd.Parameters.AddWithValue("@Mold_no", mold.MoldNumber);
                                 cmd.Parameters.AddWithValue("@Material", mold.Material);
                                 cmd.Parameters.AddWithValue("@Material_Name", mold.Material_name);

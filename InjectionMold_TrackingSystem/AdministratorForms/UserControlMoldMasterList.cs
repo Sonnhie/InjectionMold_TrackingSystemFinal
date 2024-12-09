@@ -88,7 +88,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 string moldId = TransactionDataGridView.Rows[selectedRowIndex].Cells["id"].Value.ToString();
                 Mold mold = new Mold()
                 {
-                    id = moldId,
+                    ID = moldId,
                     MoldNumber = MoldNumber_Txt.Text,
                     Material = PartNumber_Txt.Text,
                     Material_name = PartName_Txt.Text,
@@ -140,7 +140,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                     {
                         transactionTable.Rows.Add
                         (
-                            molds.id,
+                            molds.ID,
                             molds.MoldNumber,
                             molds.Material,
                             molds.Material_name,

@@ -15,6 +15,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
     {
         private readonly string _section;
         private readonly string _employeename;
+        private readonly UserControlMoldLocation _location = new UserControlMoldLocation();
 
         public AdminDashboard(string section, string employeename)
         {
@@ -24,7 +25,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             _section = section;
             _employeename = employeename;
             MoldStatusManagement.Enabled = false;
-            LocationManagement.Enabled = false;
+            //LocationManagement.Enabled = false;
             
         }
         private void ExitApp_Click(object sender, EventArgs e)
@@ -57,7 +58,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         }
         private void LocationManagement_Click(object sender, EventArgs e)
         {
-            //UserControlUtility.DisplayUserControl(masterLocation, panel3);
+            UserControlUtility.DisplayUserControl(_location, panel3);
         }
         private void TransactionHistory_Click(object sender, EventArgs e)
         {

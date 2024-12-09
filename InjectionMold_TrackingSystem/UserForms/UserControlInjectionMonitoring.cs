@@ -138,7 +138,7 @@ namespace InjectionMold_TrackingSystem.UserForms
         {
             QRData ScannedData = new QRData(qrData);
 
-            Location_cmb.Text= ScannedData.MachineNumber;
+            Location_cmb.Text = ScannedData.MachineNumber;
         }
         private void ScanData_KeyDown(object sender, KeyEventArgs e)
         {
