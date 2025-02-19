@@ -13,11 +13,12 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
 {
     public partial class UserControlAddUser : UserControl
     {
-        private UserControlUserManagement UserControlUserManagement;
+        private readonly UserControlUserManagement UserControlUserManagement;
         public UserControlAddUser(UserControlUserManagement userControlUserManagement)
         {
             InitializeComponent();
             UserControlUserManagement = userControlUserManagement;
+            Password_Txt.MaxLength = 8;
         }
         private void ClearInputs()
         {
@@ -27,6 +28,22 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             Password_Txt.Clear();
             Role_ComboBox.SelectedIndex = -1;
             Section_ComboBox.SelectedIndex = -1;
+           
+        }
+        private bool IsEmpty()
+        {
+            bool result = false;
+
+            if (string.IsNullOrWhiteSpace(EmployeeID_Txt.Text) ||
+                string.IsNullOrWhiteSpace(UserName_Txt.Text) ||
+                string.IsNullOrWhiteSpace(Password_Txt.Text) ||
+                string.IsNullOrWhiteSpace(EmployeeName_Txt.Text) ||
+                string.IsNullOrWhiteSpace(Section_ComboBox.Text) ||
+                string.IsNullOrWhiteSpace(Role_ComboBox.Text))
+            {
+                result = true;
+            }
+            return result;
         }
         private void SaveUser_Click(object sender, EventArgs e)
         {
@@ -34,14 +51,15 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         }
         private void StoreRecord()
         {
-            if (string.IsNullOrWhiteSpace(EmployeeID_Txt.Text)||
-                string.IsNullOrWhiteSpace(UserName_Txt.Text)||
-                string.IsNullOrWhiteSpace(Password_Txt.Text)||
-                string.IsNullOrWhiteSpace(EmployeeName_Txt.Text)||
-                string.IsNullOrWhiteSpace(Section_ComboBox.Text)||
-                string.IsNullOrWhiteSpace(Role_ComboBox.Text))
+            bool result = IsEmpty();
+            if (result)
             {
                 MessageBox.Show("Please complete all fields.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (Password_Txt.TextLength < 8)
+            {
+                MessageBox.Show("Password length must be at least 8 characters.");
                 return;
             }
             try
@@ -70,6 +88,5 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 ClearInputs();
             }
         }
-        
     }
 }

@@ -70,7 +70,6 @@
             this.Password_Txt.Name = "Password_Txt";
             this.Password_Txt.Size = new System.Drawing.Size(151, 23);
             this.Password_Txt.TabIndex = 3;
-            this.Password_Txt.UseSystemPasswordChar = true;
             // 
             // label2
             // 
@@ -217,10 +216,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.EmployeeID_Txt);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.Password_Txt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.UserName_Txt);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.Password_Txt);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserControlAddUser";

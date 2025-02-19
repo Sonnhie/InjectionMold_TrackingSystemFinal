@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Collections.Specialized.BitVector32;
+using System.Runtime.InteropServices;
+using static System.Net.WebRequestMethods;
 
 namespace InjectionMold_TrackingSystem.UserForms
 {
@@ -19,6 +21,9 @@ namespace InjectionMold_TrackingSystem.UserForms
         private string _section;
         private string _employeename;
         private string _userID;
+
+        private bool isMaximized = true;
+
         public UserForm(string section, string employeename, string userID)
         {
             InitializeComponent();
@@ -91,6 +96,54 @@ namespace InjectionMold_TrackingSystem.UserForms
 
             UserControlQrGeneratorTool tool = new UserControlQrGeneratorTool(_section, _employeename);
             UserControlUtility.DisplayUserControl(tool, panel3);
+        }
+
+        private void UserForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, 0xA1, 0x2, 0);
+            }
+        }
+
+        [DllImport("user32.dll")]
+        private static extern void ReleaseCapture();
+
+        [DllImport("user32.dll")]
+        private static extern void SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture(); // Release the mouse capture
+                SendMessage(this.Handle, 0xA1, 0x2, 0); // Simulate dragging
+            }
+        }
+
+        private const int WM_NCHITTEST = 0x84;
+        private const int HTLEFT = 10, HTRIGHT = 11, HTTOP = 12, HTTOPLEFT = 13, HTTOPRIGHT = 14, HTBOTTOM = 15, HTBOTTOMLEFT = 16, HTBOTTOMRIGHT = 17;
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+
+            if (m.Msg == WM_NCHITTEST)
+            {
+                int x = Cursor.Position.X - this.Left;
+                int y = Cursor.Position.Y - this.Top;
+                int resizeBorder = 10; // Resize thickness (adjust as needed)
+
+                if (x < resizeBorder && y < resizeBorder) m.Result = (IntPtr)HTTOPLEFT;
+                else if (x > this.Width - resizeBorder && y < resizeBorder) m.Result = (IntPtr)HTTOPRIGHT;
+                else if (x < resizeBorder && y > this.Height - resizeBorder) m.Result = (IntPtr)HTBOTTOMLEFT;
+                else if (x > this.Width - resizeBorder && y > this.Height - resizeBorder) m.Result = (IntPtr)HTBOTTOMRIGHT;
+                else if (x < resizeBorder) m.Result = (IntPtr)HTLEFT;
+                else if (x > this.Width - resizeBorder) m.Result = (IntPtr)HTRIGHT;
+                else if (y < resizeBorder) m.Result = (IntPtr)HTTOP;
+                else if (y > this.Height - resizeBorder) m.Result = (IntPtr)HTBOTTOM;
+            }
         }
     }
 }

@@ -13,28 +13,46 @@ namespace InjectionMold_TrackingSystem.UtilityClass
     {
         public static async Task ExportDataToCsvAsync(DataTable dataTable, string FilePath, IProgress<int> progress)
         {
-            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial; ;
+            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
 
             if (dataTable == null || dataTable.Rows.Count == 0)
-                throw new ArgumentNullException("DataTable is empty or null.");
-            if (string.IsNullOrEmpty(FilePath)) 
-                throw new ArgumentNullException("File path is required.");
-            using(var package = new ExcelPackage())
+                throw new ArgumentNullException(nameof(dataTable), "DataTable is empty or null.");
+            if (string.IsNullOrEmpty(FilePath))
+                throw new ArgumentNullException(nameof(FilePath), "File path is required.");
+
+            using (var package = new ExcelPackage())
             {
                 var worksheet = package.Workbook.Worksheets.Add("ExportedData");
 
+                int actualColIndex = 0;
+
+                // Exclude columns with buttons (e.g., "Action" column)
                 for (int col = 0; col < dataTable.Columns.Count; col++)
                 {
-                    worksheet.Cells[1, col + 1].Value = dataTable.Columns[col].ColumnName;
-                    worksheet.Cells[1, col + 1].Style.Font.Size = 12;
-                    worksheet.Cells[1, col + 1].Style.Font.Name = "Aptos Narrow";
-                    worksheet.Cells[1, col + 1].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    string columnName = dataTable.Columns[col].ColumnName;
+
+                    if (columnName == "Update" || columnName == "Delete")  // Change "Action" to the actual column name
+                        continue;
+
+                    actualColIndex++;
+                    worksheet.Cells[1, actualColIndex].Value = columnName;
+                    worksheet.Cells[1, actualColIndex].Style.Font.Size = 12;
+                    worksheet.Cells[1, actualColIndex].Style.Font.Name = "Aptos Narrow";
+                    worksheet.Cells[1, actualColIndex].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                 }
-                for(int row = 0; row < dataTable.Rows.Count; row++)
+
+                for (int row = 0; row < dataTable.Rows.Count; row++)
                 {
-                    for(int col = 0; col < dataTable.Columns.Count; col++)
+                    actualColIndex = 0;
+                    for (int col = 0; col < dataTable.Columns.Count; col++)
                     {
-                        var cell = worksheet.Cells[row + 2, col + 1];
+                        string columnName = dataTable.Columns[col].ColumnName;
+
+                        if (columnName == "Update" || columnName == "Delete")  // Change "Action" to the actual column name
+                            continue;
+
+                        actualColIndex++;
+                        var cell = worksheet.Cells[row + 2, actualColIndex];
                         cell.Value = dataTable.Rows[row][col];
                         cell.Style.Font.Size = 11;
                         cell.Style.Font.Name = "Aptos Narrow";
@@ -46,6 +64,7 @@ namespace InjectionMold_TrackingSystem.UtilityClass
 
                     await Task.Delay(100);
                 }
+
                 worksheet.Cells.AutoFitColumns();
                 FileInfo fileInfo = new FileInfo(FilePath);
                 package.SaveAs(fileInfo);

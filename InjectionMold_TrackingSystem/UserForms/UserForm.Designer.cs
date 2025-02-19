@@ -61,6 +61,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1137, 34);
             this.panel1.TabIndex = 1;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
             // ExitApp
             // 
@@ -305,6 +306,7 @@
             this.Name = "UserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserForm";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UserForm_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExitApp)).EndInit();

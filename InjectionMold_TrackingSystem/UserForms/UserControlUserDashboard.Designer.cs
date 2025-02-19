@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlUserDashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -154,15 +154,15 @@
             // 
             // chart2
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
             this.chart2.Location = new System.Drawing.Point(14, 187);
             this.chart2.Name = "chart2";
-            series1.BackSecondaryColor = System.Drawing.Color.Transparent;
-            series1.ChartArea = "ChartArea1";
-            series1.IsVisibleInLegend = false;
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
+            series2.BackSecondaryColor = System.Drawing.Color.Transparent;
+            series2.ChartArea = "ChartArea1";
+            series2.IsVisibleInLegend = false;
+            series2.Name = "Series1";
+            this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(858, 231);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart1";
@@ -176,7 +176,9 @@
             this.Status,
             this.Date,
             this.LastDate});
+            this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
+            this.listView1.HoverSelection = true;
             this.listView1.Location = new System.Drawing.Point(14, 449);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(858, 189);

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -63,6 +64,30 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
         {
             UserControlTransactionManagement transactionManagement = new UserControlTransactionManagement(_section, _employeename);
             UserControlUtility.DisplayUserControl(transactionManagement, panel3);
+        }
+
+        private void AdminDashboard_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, 0xA1, 0x2, 0);
+            }
+        }
+
+        [DllImport("user32.dll")]
+        private static extern void ReleaseCapture();
+
+        [DllImport("user32.dll")]
+        private static extern void SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture(); // Release the mouse capture
+                SendMessage(this.Handle, 0xA1, 0x2, 0); // Simulate dragging
+            }
         }
     }
 }
