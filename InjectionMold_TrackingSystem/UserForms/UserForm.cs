@@ -21,9 +21,7 @@ namespace InjectionMold_TrackingSystem.UserForms
         private string _section;
         private string _employeename;
         private string _userID;
-
-        private bool isMaximized = true;
-
+         private readonly DbConnection connection;
         public UserForm(string section, string employeename, string userID)
         {
             InitializeComponent();
@@ -33,7 +31,13 @@ namespace InjectionMold_TrackingSystem.UserForms
             SetbuttonAccess();
             UserControlUserDashboard userControlUserDashboard = new UserControlUserDashboard(section);
             UserControlUtility.DisplayUserControl(userControlUserDashboard, panel3);
-            
+            connection = new DbConnection();
+
+        }
+
+        private void UserForm_Load(object sender, EventArgs e)
+        {
+
         }
         private void ExitApp_Click(object sender, EventArgs e)
         {
@@ -145,5 +149,7 @@ namespace InjectionMold_TrackingSystem.UserForms
                 else if (y > this.Height - resizeBorder) m.Result = (IntPtr)HTBOTTOM;
             }
         }
+
+
     }
 }

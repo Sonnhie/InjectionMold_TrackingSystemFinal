@@ -16,6 +16,7 @@ namespace InjectionMold_TrackingSystem.UserForms
     {
         private readonly TransactionUtility transactionUtility = new TransactionUtility();
         private readonly string _section;
+        private readonly DbConnection connection;
         public UserControlUserDashboard(string section)
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace InjectionMold_TrackingSystem.UserForms
             DisplayIdleMoldToListView();
             _section = section;
             AlertIdleMolds(section);
+            connection = new DbConnection();
         }
         private void ConfigureChartArea()
         {
@@ -136,6 +138,33 @@ namespace InjectionMold_TrackingSystem.UserForms
             {
                 column.Width = -2;
             }
+        }
+
+        private void UpdateDatabaseStatus()
+        {
+            var (isConnected, connectionTimeMS) = connection.GetDatabaseStatus();
+
+            if (isConnected)
+            {
+                toolStripStatusLabelDbStatus.Text = $"Database Connection: Ready ({connectionTimeMS} ms)";
+                toolStripStatusLabelDbStatus.ForeColor = Color.Green;
+            }
+            else
+            {
+                toolStripStatusLabelDbStatus.Text = "Database Connection: Disconnected";
+                toolStripStatusLabelDbStatus.ForeColor = Color.Red;
+            }
+        }
+
+        private void UserControlUserDashboard_Load(object sender, EventArgs e)
+        {
+            UpdateDatabaseStatus();
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            UpdateDatabaseStatus();
         }
     }
 }

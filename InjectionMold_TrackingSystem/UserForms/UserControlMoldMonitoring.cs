@@ -18,6 +18,7 @@ namespace InjectionMold_TrackingSystem.UserForms
 
         private string _section;
         private string _employeeName;
+        private readonly DbConnection connection;
 
         public UserControlMoldMonitoring(string section, string employeename)
         {
@@ -27,6 +28,7 @@ namespace InjectionMold_TrackingSystem.UserForms
             LoadTransactionLogs(_section);
             ScanData.Focus();
             PartNumber_txt.CharacterCasing = CharacterCasing.Upper;
+            connection = new DbConnection();
         }
         private void ScanData_KeyDown_1(object sender, KeyEventArgs e)
         {
@@ -172,6 +174,9 @@ namespace InjectionMold_TrackingSystem.UserForms
         {
             LoadTransactionLogs(_section);
             ScanData.Focus();
+            UpdateDatabaseStatus();
+            timer1.Start();
+
         }
         private void SaveData_Click(object sender, EventArgs e)
         {
@@ -189,6 +194,27 @@ namespace InjectionMold_TrackingSystem.UserForms
             QRData ScannedData = new QRData(qrData);
 
             Location_cmb.Text = ScannedData.MachineNumber;
+        }
+
+        private void UpdateDatabaseStatus()
+        {
+            var (isConnected, connectionTimeMS) = connection.GetDatabaseStatus();
+
+            if (isConnected)
+            {
+                toolStripStatusLabelDbStatus.Text = $"Database Connection: Ready ({connectionTimeMS} ms)";
+                toolStripStatusLabelDbStatus.ForeColor = Color.Green;
+            }
+            else
+            {
+                toolStripStatusLabelDbStatus.Text = "Database Connection: Disconnected";
+                toolStripStatusLabelDbStatus.ForeColor = Color.Red;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            UpdateDatabaseStatus();
         }
     }
 }

@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.TransactionDataGridView = new Zuby.ADGV.AdvancedDataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InputPanel = new System.Windows.Forms.Panel();
+            this.Location_cmb = new System.Windows.Forms.TextBox();
             this.ScanData = new System.Windows.Forms.TextBox();
             this.ScanDatalbl = new System.Windows.Forms.Label();
             this.SaveData = new System.Windows.Forms.Button();
@@ -59,10 +61,13 @@
             this.PartNumber_txt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.Location_cmb = new System.Windows.Forms.TextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelDbStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionDataGridView)).BeginInit();
             this.InputPanel.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -71,7 +76,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(17, 22);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(851, 360);
+            this.panel1.Size = new System.Drawing.Size(851, 272);
             this.panel1.TabIndex = 2;
             // 
             // TransactionDataGridView
@@ -82,14 +87,14 @@
             this.TransactionDataGridView.AllowUserToResizeRows = false;
             this.TransactionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.TransactionDataGridView.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.TransactionDataGridView.EnableHeadersVisualStyles = false;
             this.TransactionDataGridView.FilterAndSortEnabled = true;
             this.TransactionDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
@@ -98,7 +103,7 @@
             this.TransactionDataGridView.Name = "TransactionDataGridView";
             this.TransactionDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TransactionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.TransactionDataGridView.Size = new System.Drawing.Size(815, 295);
+            this.TransactionDataGridView.Size = new System.Drawing.Size(815, 213);
             this.TransactionDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
             this.TransactionDataGridView.TabIndex = 2;
             // 
@@ -165,10 +170,18 @@
             this.InputPanel.Controls.Add(this.PartNumber_txt);
             this.InputPanel.Controls.Add(this.label2);
             this.InputPanel.Controls.Add(this.label9);
-            this.InputPanel.Location = new System.Drawing.Point(17, 388);
+            this.InputPanel.Location = new System.Drawing.Point(17, 300);
             this.InputPanel.Name = "InputPanel";
-            this.InputPanel.Size = new System.Drawing.Size(851, 309);
+            this.InputPanel.Size = new System.Drawing.Size(851, 298);
             this.InputPanel.TabIndex = 3;
+            // 
+            // Location_cmb
+            // 
+            this.Location_cmb.Location = new System.Drawing.Point(581, 101);
+            this.Location_cmb.Name = "Location_cmb";
+            this.Location_cmb.ReadOnly = true;
+            this.Location_cmb.Size = new System.Drawing.Size(213, 22);
+            this.Location_cmb.TabIndex = 98;
             // 
             // ScanData
             // 
@@ -193,7 +206,7 @@
             this.SaveData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
             this.SaveData.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveData.ForeColor = System.Drawing.Color.White;
-            this.SaveData.Location = new System.Drawing.Point(511, 261);
+            this.SaveData.Location = new System.Drawing.Point(509, 250);
             this.SaveData.Name = "SaveData";
             this.SaveData.Size = new System.Drawing.Size(126, 42);
             this.SaveData.TabIndex = 94;
@@ -234,7 +247,7 @@
             this.ClearButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
             this.ClearButton.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearButton.ForeColor = System.Drawing.Color.White;
-            this.ClearButton.Location = new System.Drawing.Point(668, 261);
+            this.ClearButton.Location = new System.Drawing.Point(668, 250);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(126, 42);
             this.ClearButton.TabIndex = 95;
@@ -349,30 +362,47 @@
             this.label9.TabIndex = 79;
             this.label9.Text = "Data Entry";
             // 
-            // Location_cmb
+            // statusStrip1
             // 
-            this.Location_cmb.Location = new System.Drawing.Point(581, 101);
-            this.Location_cmb.Name = "Location_cmb";
-            this.Location_cmb.ReadOnly = true;
-            this.Location_cmb.Size = new System.Drawing.Size(213, 22);
-            this.Location_cmb.TabIndex = 98;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelDbStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 638);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
+            this.statusStrip1.TabIndex = 99;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelDbStatus
+            // 
+            this.toolStripStatusLabelDbStatus.Name = "toolStripStatusLabelDbStatus";
+            this.toolStripStatusLabelDbStatus.Size = new System.Drawing.Size(0, 17);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 10000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // UserControlMoldMonitoring
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.InputPanel);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserControlMoldMonitoring";
-            this.Size = new System.Drawing.Size(884, 718);
+            this.Size = new System.Drawing.Size(884, 660);
             this.Load += new System.EventHandler(this.UserControlMoldMonitoring_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionDataGridView)).EndInit();
             this.InputPanel.ResumeLayout(false);
             this.InputPanel.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -410,5 +440,8 @@
         private System.Windows.Forms.Label label9;
         private Zuby.ADGV.AdvancedDataGridView TransactionDataGridView;
         private System.Windows.Forms.TextBox Location_cmb;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDbStatus;
+        private System.Windows.Forms.Timer timer1;
     }
 }

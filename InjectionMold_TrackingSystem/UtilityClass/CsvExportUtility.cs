@@ -68,6 +68,8 @@ namespace InjectionMold_TrackingSystem.UtilityClass
                 worksheet.Cells.AutoFitColumns();
                 FileInfo fileInfo = new FileInfo(FilePath);
                 package.SaveAs(fileInfo);
+
+                progress?.Report(100);
             }
         }
     }

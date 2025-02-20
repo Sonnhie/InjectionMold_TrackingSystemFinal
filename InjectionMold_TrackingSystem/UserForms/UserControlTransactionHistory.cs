@@ -17,13 +17,15 @@ namespace InjectionMold_TrackingSystem.UserForms
 
         private readonly string _section;
         private readonly string _employee;
+        
         public UserControlTransactionHistory(string section, string employee)
         {
             InitializeComponent();
             _section = section;
             _employee = employee;
             LoadTransactionLogs(_section);
-            progressBar1.Visible = false;
+           // progressBar1.Visible = false;
+           toolStripProgressBar1.Visible = false;
         }
         public void LoadTransactionLogs(string section)
         {
@@ -114,22 +116,44 @@ namespace InjectionMold_TrackingSystem.UserForms
                     string filePath = saveFileDialog.FileName;
                     var dataTable = GetDataTableFromGridView();
 
-                    progressBar1.Value = 0;
-                    progressBar1.Visible = true;
-                    var progress = new Progress<int>(value => progressBar1.Value = value);
+                    //progressBar1.Value = 0;
+                    //progressBar1.Visible = true;
+
+                    toolStripProgressBar1.Value = 0;
+                    toolStripProgressBar1.Visible = true;
+                    toolStripStatusLabel1.Text = "Exporting...";
+                   //var progress = new Progress<int>(value => progressBar1.Value = value)
+
+                    var progress = new Progress<int>(value =>
+                    {
+                        toolStripProgressBar1.Value = value;
+                        toolStripStatusLabel1.Text = $"Exporting... {value}%";
+                    });
 
                     try
                     {
                        await CsvExportUtility.ExportDataToCsvAsync(dataTable, filePath, progress);
-                       MessageBox.Show("Export completed successfully!");
-                       progressBar1.Value = 0;
-                       progressBar1.Visible = false;
+
+                        // MessageBox.Show("Export completed successfully!");
+                        // progressBar1.Value = 0;
+                        // progressBar1.Visible = false;
+                        toolStripProgressBar1.Value = 100;
+                        toolStripStatusLabel1.Text = "Export completed successfully!";
+                        MessageBox.Show("Export completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error: {ex.Message}");
+                        toolStripStatusLabel1.Text = "Export failed!";
+                        toolStripStatusLabel1.ForeColor = Color.Red;
+                        MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
+                    finally
+                    {
+                        toolStripProgressBar1.Value = 0;
+                        toolStripProgressBar1.Visible = false;
+                        toolStripStatusLabel1.Text = "";
+                    }
+                }   
                 else
                 {
                     MessageBox.Show("Export canceled.");

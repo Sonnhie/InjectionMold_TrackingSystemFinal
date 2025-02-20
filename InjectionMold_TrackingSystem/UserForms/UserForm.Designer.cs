@@ -96,7 +96,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 34);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(253, 660);
+            this.panel2.Size = new System.Drawing.Size(253, 676);
             this.panel2.TabIndex = 2;
             // 
             // flowLayoutPanel1
@@ -274,7 +274,7 @@
             this.Logout.ForeColor = System.Drawing.Color.White;
             this.Logout.Image = ((System.Drawing.Image)(resources.GetObject("Logout.Image")));
             this.Logout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Logout.Location = new System.Drawing.Point(0, 613);
+            this.Logout.Location = new System.Drawing.Point(0, 629);
             this.Logout.Name = "Logout";
             this.Logout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.Logout.Size = new System.Drawing.Size(253, 47);
@@ -289,14 +289,14 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(253, 34);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(884, 660);
+            this.panel3.Size = new System.Drawing.Size(884, 676);
             this.panel3.TabIndex = 3;
             // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1137, 694);
+            this.ClientSize = new System.Drawing.Size(1137, 710);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -306,6 +306,7 @@
             this.Name = "UserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserForm";
+            this.Load += new System.EventHandler(this.UserForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UserForm_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

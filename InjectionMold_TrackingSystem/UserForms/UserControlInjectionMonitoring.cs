@@ -19,6 +19,7 @@ namespace InjectionMold_TrackingSystem.UserForms
         private readonly MoldDataManagementUtility moldDataManagementUtility = new MoldDataManagementUtility();
         private readonly string _section;
         private readonly string _employeeName;
+        private readonly DbConnection connection;
         public UserControlInjectionMonitoring(string section, string employee)
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace InjectionMold_TrackingSystem.UserForms
             _employeeName = employee;
             LoadTransactionLogs(_section);
             PartNumber_txt.CharacterCasing = CharacterCasing.Upper;
+            connection = new DbConnection();
         }
         public void LoadTransactionLogs(string section)
         {
@@ -190,10 +192,32 @@ namespace InjectionMold_TrackingSystem.UserForms
         private void UserControlInjectionMonitoring_Load(object sender, EventArgs e)
         {
             ScanData.Focus();
+            UpdateDatabaseStatus();
+            timer1.Start();
         }
         private void Location_cmb_KeyDown(object sender, KeyEventArgs e)
         {
 
+        }
+        private void UpdateDatabaseStatus()
+        {
+            var (isConnected, connectionTimeMS) = connection.GetDatabaseStatus();
+
+            if (isConnected)
+            {
+                toolStripStatusLabelDbStatus.Text = $"Database Connection: Ready ({connectionTimeMS} ms)";
+                toolStripStatusLabelDbStatus.ForeColor = Color.Green;
+            }
+            else
+            {
+                toolStripStatusLabelDbStatus.Text = "Database Connection: Disconnected";
+                toolStripStatusLabelDbStatus.ForeColor = Color.Red;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            UpdateDatabaseStatus();
         }
     }
 }
