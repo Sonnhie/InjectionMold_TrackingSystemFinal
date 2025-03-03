@@ -38,7 +38,7 @@ namespace InjectionMold_TrackingSystem.UserForms
                 if (transactions != null)
                 {
                     DataTable transactionTable = new DataTable();
-                    transactionTable.Columns.Add("Mold Number", typeof(string));
+                   // transactionTable.Columns.Add("Mold Number", typeof(string));
                     transactionTable.Columns.Add("Part Number", typeof(string));
                     transactionTable.Columns.Add("Die Number", typeof(string));
                     transactionTable.Columns.Add("Customer", typeof(string));
@@ -52,7 +52,7 @@ namespace InjectionMold_TrackingSystem.UserForms
                     {
                         transactionTable.Rows.Add
                             (
-                                transaction.MoldNumber,
+                               // transaction.MoldNumber,
                                 transaction.PartNumber,
                                 transaction.DieNumber,
                                 transaction.Customer,
@@ -214,7 +214,6 @@ namespace InjectionMold_TrackingSystem.UserForms
                 toolStripStatusLabelDbStatus.ForeColor = Color.Red;
             }
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             UpdateDatabaseStatus();

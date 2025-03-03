@@ -21,7 +21,8 @@ namespace InjectionMold_TrackingSystem.UserForms
         private string _section;
         private string _employeename;
         private string _userID;
-         private readonly DbConnection connection;
+        private readonly DbConnection connection;
+        private readonly UserControlMoldLocation _location = new UserControlMoldLocation();
         public UserForm(string section, string employeename, string userID)
         {
             InitializeComponent();
@@ -58,6 +59,7 @@ namespace InjectionMold_TrackingSystem.UserForms
             {
                 case "Injection":
                     MoldMonitoring.Hide();
+                    LocationManagement.Hide();
                     break;
                 case "Mold":
                     InjectionMonitoring.Hide();
@@ -66,6 +68,7 @@ namespace InjectionMold_TrackingSystem.UserForms
                     InjectionMonitoring.Hide();
                     MoldMonitoring.Hide();
                     QrGenerator.Hide();
+                    LocationManagement.Hide();
                     break;
             }
         }
@@ -128,6 +131,11 @@ namespace InjectionMold_TrackingSystem.UserForms
 
         private const int WM_NCHITTEST = 0x84;
         private const int HTLEFT = 10, HTRIGHT = 11, HTTOP = 12, HTTOPLEFT = 13, HTTOPRIGHT = 14, HTBOTTOM = 15, HTBOTTOMLEFT = 16, HTBOTTOMRIGHT = 17;
+
+        private void LocationManagement_Click(object sender, EventArgs e)
+        {
+            UserControlUtility.DisplayUserControl(_location, panel3);
+        }
 
         protected override void WndProc(ref Message m)
         {

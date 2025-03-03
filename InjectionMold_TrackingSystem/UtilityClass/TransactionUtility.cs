@@ -238,7 +238,7 @@ namespace InjectionMold_TrackingSystem.UtilityClass
                 {
                     DateTime dateTime = DateTime.Today;
                    
-                    string Query = "select partnumber, dienumber, customer, status, location, remarks, shot_count, date, time, in_charge from History " +
+                    string Query = "select moldnumber, partnumber, dienumber, customer, status, location, remarks, shot_count, date, time, in_charge from History " +
                         "where CAST(date AS Date) = @Today and section = @section order by date ASC";
                     
                     using(SqlCommand cmd = new SqlCommand(Query,conn))
@@ -253,6 +253,7 @@ namespace InjectionMold_TrackingSystem.UtilityClass
                             {
                                 TransactionData transactionData = new TransactionData
                                 {
+                                   MoldNumber = reader["moldnumber"]?.ToString() ?? string.Empty,
                                    PartNumber = reader["partnumber"]?.ToString() ?? string.Empty,
                                    DieNumber = reader["dienumber"]?.ToString() ?? string.Empty,
                                    Customer = reader["customer"]?.ToString() ?? string.Empty,
@@ -260,7 +261,7 @@ namespace InjectionMold_TrackingSystem.UtilityClass
                                    Remarks = reader["remarks"]?.ToString() ?? string.Empty,
                                    Status = reader["status"]?.ToString() ?? string.Empty,
                                    ShotCount = reader["shot_count"]?.ToString() ?? string.Empty,
-                                   Date = reader["date"] != DBNull.Value ? Convert.ToDateTime(reader["date"]) : DateTime.MinValue,
+                                   Date = reader["date"] != DBNull.Value ? Convert.ToDateTime(reader["date"]).Date : DateTime.MinValue.Date,
                                    Time = reader["time"]?.ToString() ?? string.Empty,
                                    UserId = reader["in_charge"]?.ToString()
                                 };

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -351,6 +352,32 @@ namespace InjectionMold_TrackingSystem.UtilityClass
                 }
             }
             catch(Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            return isRecord;
+        }
+
+        public bool UpdateLocation(string ID, string code, string description)
+        {
+            bool isRecord = false;
+            try
+            {
+                string query = "update MoldLocation set LocationCode = @code , LocationDescription = @description where Id = @Id";
+                using (SqlConnection con = connection.GetConnection())
+                {
+                    using (SqlCommand command = new SqlCommand(query,con))
+                    {
+                        con.Open();
+                        command.Parameters.AddWithValue("@Id", ID);
+                        command.Parameters.AddWithValue("@code", code);
+                        command.Parameters.AddWithValue("@description", description);
+                        int result = command.ExecuteNonQuery();
+                        isRecord = result > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }

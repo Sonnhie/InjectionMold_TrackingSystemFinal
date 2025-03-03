@@ -73,6 +73,16 @@ namespace InjectionMold_TrackingSystem.UserForms
                 MessageBox.Show("Remarks cannot be empty. Please enter a remark.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (string.IsNullOrWhiteSpace(PartNumber_txt.Text) ||
+                string.IsNullOrWhiteSpace(MoldNumber_txt.Text) ||
+                string.IsNullOrWhiteSpace(DieNumber_txt.Text) || 
+                string.IsNullOrWhiteSpace(Customer_txt.Text) || 
+                string.IsNullOrWhiteSpace(Status_cmb.Text) || 
+                string.IsNullOrWhiteSpace(Location_cmb.Text))
+            {
+                MessageBox.Show("Please fill out all the fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             try
             {
                 TransactionData transaction = new TransactionData

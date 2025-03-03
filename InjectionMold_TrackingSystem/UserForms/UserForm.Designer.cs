@@ -44,6 +44,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Logout = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.LocationManagement = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExitApp)).BeginInit();
             this.panel2.SuspendLayout();
@@ -107,6 +108,7 @@
             this.flowLayoutPanel1.Controls.Add(this.Transaction);
             this.flowLayoutPanel1.Controls.Add(this.StatusViewer);
             this.flowLayoutPanel1.Controls.Add(this.QrGenerator);
+            this.flowLayoutPanel1.Controls.Add(this.LocationManagement);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 235);
@@ -292,6 +294,27 @@
             this.panel3.Size = new System.Drawing.Size(884, 676);
             this.panel3.TabIndex = 3;
             // 
+            // LocationManagement
+            // 
+            this.LocationManagement.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.LocationManagement.FlatAppearance.BorderSize = 0;
+            this.LocationManagement.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(117)))), ((int)(((byte)(101)))));
+            this.LocationManagement.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(117)))), ((int)(((byte)(101)))));
+            this.LocationManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LocationManagement.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LocationManagement.ForeColor = System.Drawing.Color.White;
+            this.LocationManagement.Image = ((System.Drawing.Image)(resources.GetObject("LocationManagement.Image")));
+            this.LocationManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LocationManagement.Location = new System.Drawing.Point(3, 279);
+            this.LocationManagement.Name = "LocationManagement";
+            this.LocationManagement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.LocationManagement.Size = new System.Drawing.Size(247, 40);
+            this.LocationManagement.TabIndex = 10;
+            this.LocationManagement.Text = "              Mold Location Management";
+            this.LocationManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LocationManagement.UseVisualStyleBackColor = true;
+            this.LocationManagement.Click += new System.EventHandler(this.LocationManagement_Click);
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -302,10 +325,11 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UserForm";
+            this.Text = "IMTS";
             this.Load += new System.EventHandler(this.UserForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UserForm_MouseDown);
             this.panel1.ResumeLayout(false);
@@ -336,5 +360,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button MoldMonitoring;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button LocationManagement;
     }
 }

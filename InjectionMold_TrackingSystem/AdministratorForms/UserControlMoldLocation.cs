@@ -73,7 +73,7 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
             if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "UpdateData")
             {
-                
+                DialogResult result = MessageBox.Show("Are you sure you want to update this location?", "Update location", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             }
             else if (TransactionDataGridView.Columns[e.ColumnIndex].Name == "DeleteData")
             {
