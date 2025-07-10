@@ -132,32 +132,21 @@ namespace InjectionMold_TrackingSystem.UserForms
         private const int WM_NCHITTEST = 0x84;
         private const int HTLEFT = 10, HTRIGHT = 11, HTTOP = 12, HTTOPLEFT = 13, HTTOPRIGHT = 14, HTBOTTOM = 15, HTBOTTOMLEFT = 16, HTBOTTOMRIGHT = 17;
 
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void BtnShotCount_Click(object sender, EventArgs e)
+        {
+            UserControlShotcount userControlShotcount = new UserControlShotcount();
+            UserControlUtility.DisplayUserControl(userControlShotcount, panel3);
+        }
+
         private void LocationManagement_Click(object sender, EventArgs e)
         {
             UserControlUtility.DisplayUserControl(_location, panel3);
         }
-
-        protected override void WndProc(ref Message m)
-        {
-            base.WndProc(ref m);
-
-            if (m.Msg == WM_NCHITTEST)
-            {
-                int x = Cursor.Position.X - this.Left;
-                int y = Cursor.Position.Y - this.Top;
-                int resizeBorder = 10; // Resize thickness (adjust as needed)
-
-                if (x < resizeBorder && y < resizeBorder) m.Result = (IntPtr)HTTOPLEFT;
-                else if (x > this.Width - resizeBorder && y < resizeBorder) m.Result = (IntPtr)HTTOPRIGHT;
-                else if (x < resizeBorder && y > this.Height - resizeBorder) m.Result = (IntPtr)HTBOTTOMLEFT;
-                else if (x > this.Width - resizeBorder && y > this.Height - resizeBorder) m.Result = (IntPtr)HTBOTTOMRIGHT;
-                else if (x < resizeBorder) m.Result = (IntPtr)HTLEFT;
-                else if (x > this.Width - resizeBorder) m.Result = (IntPtr)HTRIGHT;
-                else if (y < resizeBorder) m.Result = (IntPtr)HTTOP;
-                else if (y > this.Height - resizeBorder) m.Result = (IntPtr)HTBOTTOM;
-            }
-        }
-
 
     }
 }

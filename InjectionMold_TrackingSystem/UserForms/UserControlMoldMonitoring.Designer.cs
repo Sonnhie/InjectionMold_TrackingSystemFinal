@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.TransactionDataGridView = new Zuby.ADGV.AdvancedDataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -87,14 +87,14 @@
             this.TransactionDataGridView.AllowUserToResizeRows = false;
             this.TransactionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.TransactionDataGridView.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.TransactionDataGridView.EnableHeadersVisualStyles = false;
             this.TransactionDataGridView.FilterAndSortEnabled = true;
             this.TransactionDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
@@ -260,11 +260,12 @@
             this.Status_cmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Status_cmb.FormattingEnabled = true;
             this.Status_cmb.Items.AddRange(new object[] {
-            "Mold Preparation ",
-            "Mold Issuance",
-            "Mold Endorsement",
-            "Mold Maintenance",
-            "Mold Preparation"});
+            "FOR PM (OH/PL)",
+            "FOR REPAIR",
+            "FOR UPMOLD",
+            "FOR OUTSIDE REPAIR",
+            "EOL",
+            "IDLE MOLD"});
             this.Status_cmb.Location = new System.Drawing.Point(581, 54);
             this.Status_cmb.Name = "Status_cmb";
             this.Status_cmb.Size = new System.Drawing.Size(213, 25);

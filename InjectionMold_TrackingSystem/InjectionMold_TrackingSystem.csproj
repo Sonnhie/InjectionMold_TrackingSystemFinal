@@ -240,6 +240,12 @@
     <Compile Include="UserForms\UserControlQrGeneratorTool.Designer.cs">
       <DependentUpon>UserControlQrGeneratorTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserForms\UserControlShotcount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserControlShotcount.Designer.cs">
+      <DependentUpon>UserControlShotcount.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForms\UserControlStatusViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -342,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\UserControlQrGeneratorTool.resx">
       <DependentUpon>UserControlQrGeneratorTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserControlShotcount.resx">
+      <DependentUpon>UserControlShotcount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\UserControlStatusViewer.resx">
       <DependentUpon>UserControlStatusViewer.cs</DependentUpon>

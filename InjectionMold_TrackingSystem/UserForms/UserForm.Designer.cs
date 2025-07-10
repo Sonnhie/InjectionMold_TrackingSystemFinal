@@ -40,11 +40,12 @@
             this.Transaction = new System.Windows.Forms.Button();
             this.StatusViewer = new System.Windows.Forms.Button();
             this.QrGenerator = new System.Windows.Forms.Button();
+            this.LocationManagement = new System.Windows.Forms.Button();
+            this.BtnShotCount = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Logout = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.LocationManagement = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExitApp)).BeginInit();
             this.panel2.SuspendLayout();
@@ -109,11 +110,12 @@
             this.flowLayoutPanel1.Controls.Add(this.StatusViewer);
             this.flowLayoutPanel1.Controls.Add(this.QrGenerator);
             this.flowLayoutPanel1.Controls.Add(this.LocationManagement);
+            this.flowLayoutPanel1.Controls.Add(this.BtnShotCount);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 235);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 210);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(253, 363);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(253, 388);
             this.flowLayoutPanel1.TabIndex = 8;
             // 
             // Dashboard
@@ -153,8 +155,9 @@
             this.InjectionMonitoring.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.InjectionMonitoring.Size = new System.Drawing.Size(247, 40);
             this.InjectionMonitoring.TabIndex = 2;
-            this.InjectionMonitoring.Text = "               Injection Monitoring";
+            this.InjectionMonitoring.Text = "        Injection Monitoring";
             this.InjectionMonitoring.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.InjectionMonitoring.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.InjectionMonitoring.UseVisualStyleBackColor = true;
             this.InjectionMonitoring.Click += new System.EventHandler(this.InjectionMonitoring_Click);
             // 
@@ -174,8 +177,9 @@
             this.MoldMonitoring.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.MoldMonitoring.Size = new System.Drawing.Size(247, 40);
             this.MoldMonitoring.TabIndex = 9;
-            this.MoldMonitoring.Text = "               Mold Monitoring";
+            this.MoldMonitoring.Text = "        Mold Monitoring";
             this.MoldMonitoring.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MoldMonitoring.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.MoldMonitoring.UseVisualStyleBackColor = true;
             this.MoldMonitoring.Click += new System.EventHandler(this.MoldMonitoring_Click);
             // 
@@ -195,8 +199,9 @@
             this.Transaction.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.Transaction.Size = new System.Drawing.Size(247, 40);
             this.Transaction.TabIndex = 3;
-            this.Transaction.Text = "               Transaction History";
+            this.Transaction.Text = "        Transaction History";
             this.Transaction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Transaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Transaction.UseVisualStyleBackColor = true;
             this.Transaction.Click += new System.EventHandler(this.Transaction_Click);
             // 
@@ -216,8 +221,9 @@
             this.StatusViewer.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.StatusViewer.Size = new System.Drawing.Size(247, 40);
             this.StatusViewer.TabIndex = 4;
-            this.StatusViewer.Text = "               Status Viewer";
+            this.StatusViewer.Text = "         Status Viewer";
             this.StatusViewer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.StatusViewer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.StatusViewer.UseVisualStyleBackColor = true;
             this.StatusViewer.Click += new System.EventHandler(this.StatusViewer_Click);
             // 
@@ -237,17 +243,62 @@
             this.QrGenerator.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.QrGenerator.Size = new System.Drawing.Size(247, 40);
             this.QrGenerator.TabIndex = 5;
-            this.QrGenerator.Text = "              QR Generator Tool";
+            this.QrGenerator.Text = "         QR Generator Tool";
             this.QrGenerator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.QrGenerator.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.QrGenerator.UseVisualStyleBackColor = true;
             this.QrGenerator.Click += new System.EventHandler(this.QrGenerator_Click);
+            // 
+            // LocationManagement
+            // 
+            this.LocationManagement.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.LocationManagement.FlatAppearance.BorderSize = 0;
+            this.LocationManagement.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(117)))), ((int)(((byte)(101)))));
+            this.LocationManagement.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(117)))), ((int)(((byte)(101)))));
+            this.LocationManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LocationManagement.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LocationManagement.ForeColor = System.Drawing.Color.White;
+            this.LocationManagement.Image = ((System.Drawing.Image)(resources.GetObject("LocationManagement.Image")));
+            this.LocationManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LocationManagement.Location = new System.Drawing.Point(3, 279);
+            this.LocationManagement.Name = "LocationManagement";
+            this.LocationManagement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.LocationManagement.Size = new System.Drawing.Size(247, 40);
+            this.LocationManagement.TabIndex = 10;
+            this.LocationManagement.Text = "        Location Management";
+            this.LocationManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LocationManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.LocationManagement.UseVisualStyleBackColor = true;
+            this.LocationManagement.Click += new System.EventHandler(this.LocationManagement_Click);
+            // 
+            // BtnShotCount
+            // 
+            this.BtnShotCount.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnShotCount.FlatAppearance.BorderSize = 0;
+            this.BtnShotCount.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(117)))), ((int)(((byte)(101)))));
+            this.BtnShotCount.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(117)))), ((int)(((byte)(101)))));
+            this.BtnShotCount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnShotCount.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnShotCount.ForeColor = System.Drawing.Color.White;
+            this.BtnShotCount.Image = ((System.Drawing.Image)(resources.GetObject("BtnShotCount.Image")));
+            this.BtnShotCount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnShotCount.Location = new System.Drawing.Point(3, 325);
+            this.BtnShotCount.Name = "BtnShotCount";
+            this.BtnShotCount.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.BtnShotCount.Size = new System.Drawing.Size(247, 40);
+            this.BtnShotCount.TabIndex = 11;
+            this.BtnShotCount.Text = "        Mold Shot Count";
+            this.BtnShotCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnShotCount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnShotCount.UseVisualStyleBackColor = true;
+            this.BtnShotCount.Click += new System.EventHandler(this.BtnShotCount_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(77, 174);
+            this.label2.Location = new System.Drawing.Point(79, 165);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 16);
             this.label2.TabIndex = 1;
@@ -259,7 +310,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(253, 235);
+            this.pictureBox1.Size = new System.Drawing.Size(253, 210);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -293,27 +344,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(884, 676);
             this.panel3.TabIndex = 3;
-            // 
-            // LocationManagement
-            // 
-            this.LocationManagement.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.LocationManagement.FlatAppearance.BorderSize = 0;
-            this.LocationManagement.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(117)))), ((int)(((byte)(101)))));
-            this.LocationManagement.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(117)))), ((int)(((byte)(101)))));
-            this.LocationManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LocationManagement.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LocationManagement.ForeColor = System.Drawing.Color.White;
-            this.LocationManagement.Image = ((System.Drawing.Image)(resources.GetObject("LocationManagement.Image")));
-            this.LocationManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LocationManagement.Location = new System.Drawing.Point(3, 279);
-            this.LocationManagement.Name = "LocationManagement";
-            this.LocationManagement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.LocationManagement.Size = new System.Drawing.Size(247, 40);
-            this.LocationManagement.TabIndex = 10;
-            this.LocationManagement.Text = "              Mold Location Management";
-            this.LocationManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LocationManagement.UseVisualStyleBackColor = true;
-            this.LocationManagement.Click += new System.EventHandler(this.LocationManagement_Click);
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // UserForm
             // 
@@ -361,5 +392,6 @@
         private System.Windows.Forms.Button MoldMonitoring;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button LocationManagement;
+        private System.Windows.Forms.Button BtnShotCount;
     }
 }

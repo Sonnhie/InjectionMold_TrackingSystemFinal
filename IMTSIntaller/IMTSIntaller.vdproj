@@ -356,6 +356,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -1115,11 +1123,11 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:IMTSIntaller"
         "ProductCode" = "8:{96C89CED-EC2C-46A4-A2FF-36F4C36681E4}"
-        "PackageCode" = "8:{B0E9D19A-AC1E-4FE1-AFAB-8CD8CB96B15F}"
+        "PackageCode" = "8:{9BC61FC7-B06D-4AEF-8B87-4C2DB0189B2C}"
         "UpgradeCode" = "8:{CB05D0DD-A79D-4544-A8BE-434D3AA178E0}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
@@ -1128,7 +1136,7 @@
         "ARPHELPLINK" = "8:"
         "Title" = "8:IMTSIntaller"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Nidec Instruments Corporation"
+        "ARPCONTACT" = "8:Sonny Del Rosario"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"

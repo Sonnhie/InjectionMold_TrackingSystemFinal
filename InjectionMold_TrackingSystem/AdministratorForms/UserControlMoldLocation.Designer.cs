@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlMoldLocation));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TransactionDataGridView = new Zuby.ADGV.AdvancedDataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,14 +45,8 @@
             this.Column6 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewImageColumn();
             this.AddNewMold = new System.Windows.Forms.Button();
-            this.TransactionDataGridView = new Zuby.ADGV.AdvancedDataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.UpdateData = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteData = new System.Windows.Forms.DataGridViewImageColumn();
             this.PrintLocation = new System.Windows.Forms.DataGridViewImageColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -63,6 +62,90 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(843, 506);
             this.panel1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(6)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(436, 212);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 16);
+            this.label1.TabIndex = 88;
+            this.label1.Text = "Print Preview";
+            // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(433, 231);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(393, 257);
+            this.panel3.TabIndex = 87;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(13, 231);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(414, 257);
+            this.panel2.TabIndex = 63;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(6)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(10, 212);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(124, 16);
+            this.label2.TabIndex = 64;
+            this.label2.Text = "Add New location";
+            // 
+            // TransactionDataGridView
+            // 
+            this.TransactionDataGridView.AllowUserToAddRows = false;
+            this.TransactionDataGridView.AllowUserToDeleteRows = false;
+            this.TransactionDataGridView.AllowUserToResizeColumns = false;
+            this.TransactionDataGridView.AllowUserToResizeRows = false;
+            this.TransactionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.TransactionDataGridView.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.TransactionDataGridView.ColumnHeadersHeight = 26;
+            this.TransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DeleteData,
+            this.PrintLocation});
+            this.TransactionDataGridView.EnableHeadersVisualStyles = false;
+            this.TransactionDataGridView.FilterAndSortEnabled = true;
+            this.TransactionDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.TransactionDataGridView.Location = new System.Drawing.Point(13, 11);
+            this.TransactionDataGridView.MaxFilterButtonImageHeight = 23;
+            this.TransactionDataGridView.Name = "TransactionDataGridView";
+            this.TransactionDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TransactionDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.TransactionDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.TransactionDataGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
+            this.TransactionDataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.TransactionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.TransactionDataGridView.Size = new System.Drawing.Size(813, 187);
+            this.TransactionDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
+            this.TransactionDataGridView.TabIndex = 86;
+            this.TransactionDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionDataGridView_CellClick);
             // 
             // label3
             // 
@@ -109,72 +192,6 @@
             this.AddNewMold.UseVisualStyleBackColor = false;
             this.AddNewMold.Click += new System.EventHandler(this.AddNewMold_Click);
             // 
-            // TransactionDataGridView
-            // 
-            this.TransactionDataGridView.AllowUserToAddRows = false;
-            this.TransactionDataGridView.AllowUserToDeleteRows = false;
-            this.TransactionDataGridView.AllowUserToResizeColumns = false;
-            this.TransactionDataGridView.AllowUserToResizeRows = false;
-            this.TransactionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.TransactionDataGridView.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(127)))), ((int)(((byte)(57)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.TransactionDataGridView.ColumnHeadersHeight = 26;
-            this.TransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.UpdateData,
-            this.DeleteData,
-            this.PrintLocation});
-            this.TransactionDataGridView.EnableHeadersVisualStyles = false;
-            this.TransactionDataGridView.FilterAndSortEnabled = true;
-            this.TransactionDataGridView.FilterStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.Location = new System.Drawing.Point(13, 11);
-            this.TransactionDataGridView.MaxFilterButtonImageHeight = 23;
-            this.TransactionDataGridView.Name = "TransactionDataGridView";
-            this.TransactionDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TransactionDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            this.TransactionDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.TransactionDataGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
-            this.TransactionDataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.TransactionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.TransactionDataGridView.Size = new System.Drawing.Size(813, 187);
-            this.TransactionDataGridView.SortStringChangedInvokeBeforeDatasourceUpdate = true;
-            this.TransactionDataGridView.TabIndex = 86;
-            this.TransactionDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TransactionDataGridView_CellClick);
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(13, 231);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(414, 257);
-            this.panel2.TabIndex = 63;
-            // 
-            // UpdateData
-            // 
-            this.UpdateData.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.UpdateData.HeaderText = "Update";
-            this.UpdateData.Image = ((System.Drawing.Image)(resources.GetObject("UpdateData.Image")));
-            this.UpdateData.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.UpdateData.MinimumWidth = 24;
-            this.UpdateData.Name = "UpdateData";
-            this.UpdateData.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.UpdateData.ToolTipText = "Update Data";
-            this.UpdateData.Visible = false;
-            // 
             // DeleteData
             // 
             this.DeleteData.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -197,37 +214,6 @@
             this.PrintLocation.Name = "PrintLocation";
             this.PrintLocation.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.PrintLocation.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(6)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(10, 212);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 16);
-            this.label2.TabIndex = 64;
-            this.label2.Text = "Add New location";
-            // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(433, 231);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(393, 257);
-            this.panel3.TabIndex = 87;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(6)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(436, 212);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 16);
-            this.label1.TabIndex = 88;
-            this.label1.Text = "Print Preview";
             // 
             // UserControlMoldLocation
             // 
@@ -257,12 +243,11 @@
         private System.Windows.Forms.DataGridViewImageColumn Column7;
         public System.Windows.Forms.Button AddNewMold;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridViewImageColumn UpdateData;
-        private System.Windows.Forms.DataGridViewImageColumn DeleteData;
-        private System.Windows.Forms.DataGridViewImageColumn PrintLocation;
         private System.Windows.Forms.Label label2;
         public Zuby.ADGV.AdvancedDataGridView TransactionDataGridView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridViewImageColumn DeleteData;
+        private System.Windows.Forms.DataGridViewImageColumn PrintLocation;
     }
 }

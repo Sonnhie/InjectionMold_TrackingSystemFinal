@@ -88,5 +88,17 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                 ClearInputs();
             }
         }
+        private void autogenerateBtn_Click(object sender, EventArgs e)
+        {
+            int len = 8;
+            const string ValidChar = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder result = new StringBuilder();
+            Random rand = new Random();
+            while (0 < len--)
+            {
+                result.Append(ValidChar[rand.Next(ValidChar.Length)]);
+            }
+            Password_Txt.Text = result.ToString();
+        }
     }
 }

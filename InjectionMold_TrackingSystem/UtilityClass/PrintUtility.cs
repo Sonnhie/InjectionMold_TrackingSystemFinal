@@ -27,6 +27,7 @@ namespace InjectionMold_TrackingSystem.UtilityClass
             PrintDocument printDocument = new PrintDocument();
             PaperSize customPaperSize = new PaperSize("Custom", (int)(90 * 100 / 25.4), (int)(40 * 100 / 25.4)); // Convert mm to hundredths of an inch
             printDocument.DefaultPageSettings.PaperSize = customPaperSize;
+            printDocument.PrinterSettings.PrinterName = "TSC TX200";
             
 
             printDocument.PrintPage += (sender, e) => PrintPageHandler(sender, e, image, labelText, customPaperSize);

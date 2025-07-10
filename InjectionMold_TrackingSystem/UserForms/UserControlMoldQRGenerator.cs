@@ -141,27 +141,24 @@ namespace InjectionMold_TrackingSystem.UserForms
 
             if (_printDocument != null)
             {
-                PrintDialog printDialog = new PrintDialog();
-                printDialog.Document = _printDocument;
-                if (printDialog.ShowDialog() == DialogResult.OK)
-                {
+               /* PrintDialog printDialog = new PrintDialog();*/
+               /* printDialog.Document = _printDocument;*/
+              /*  if (printDialog.ShowDialog() == DialogResult.OK)
+                {*/
                     _printDocument.Print();
                     if (_ShowPrintDocument)
                     {
-                        
                         string Label = $"Part Number: {textBoxPartNumber.Text}/Mold Number: {textBoxMoldNumber.Text}/Customer: {comboBoxCustomer.Text}";
-
                         var isRecord = transactionUtility.Printlogs(_section, Label, _employeename);
                         LoadTransactionLogs(_section);
-
                         if (!isRecord)
                         {
                             //Handle unsuccessful log entry if needed
                             MessageBox.Show("Failed to record print log.", "Logging Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                       }
+                        }
                     }
                     _ShowPrintDocument = false;
-                }
+                /*}*/
             }
         }
         public void PrintPreviewPanel()

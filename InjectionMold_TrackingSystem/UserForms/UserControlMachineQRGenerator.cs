@@ -116,12 +116,12 @@ namespace InjectionMold_TrackingSystem.UserForms
         {
             if (_printDocument != null)
             {
-                PrintDialog printDialog = new PrintDialog
+                /*PrintDialog printDialog = new PrintDialog
                 {
                     Document = _printDocument
                 };
                 if (printDialog.ShowDialog() == DialogResult.OK)
-                {
+                {*/
                     _printDocument.Print();
                     if (_ShowPrintDocument)
                     {
@@ -137,7 +137,7 @@ namespace InjectionMold_TrackingSystem.UserForms
                         }
                     }
                     _ShowPrintDocument = false;
-                }
+/*                }*/
             }
         }
         public void PrintPreviewPanel()

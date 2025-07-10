@@ -53,10 +53,10 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
                     }
                     TransactionDataGridView.DataSource = table;
                     
-                    TransactionDataGridView.Columns["UpdateData"].Visible = true;
+                   // TransactionDataGridView.Columns["UpdateData"].Visible = true;
                     TransactionDataGridView.Columns["DeleteData"].Visible = true;
                     TransactionDataGridView.Columns["PrintLocation"].Visible = true;
-                    TransactionDataGridView.Columns["UpdateData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
+                   // TransactionDataGridView.Columns["UpdateData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
                     TransactionDataGridView.Columns["DeleteData"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
                     TransactionDataGridView.Columns["PrintLocation"].DisplayIndex = TransactionDataGridView.Columns.Count - 1;
                     TransactionDataGridView.ReadOnly = true;
@@ -100,16 +100,16 @@ namespace InjectionMold_TrackingSystem.AdministratorForms
 
             if (_printDocument != null)
             {
-                PrintDialog printDialog = new PrintDialog();
+               /* PrintDialog printDialog = new PrintDialog();
                 printDialog.Document = _printDocument;
                 if (printDialog.ShowDialog() == DialogResult.OK)
-                {
+                {*/
                     if (_ShowPrintDocument)
                     {
                         _printDocument.Print();
                     }
                     _ShowPrintDocument = false;
-                }
+               /* }*/
             }
         }
         private void DisplayQrCode()

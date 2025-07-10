@@ -46,6 +46,7 @@ namespace InjectionMold_TrackingSystem.UserForms
                     transactionTable.Columns.Add("Location", typeof(string));
                     transactionTable.Columns.Add("Shot Count", typeof(string));
                     transactionTable.Columns.Add("Remarks", typeof(string));
+                    transactionTable.Columns.Add("In-charge", typeof(string));
                     transactionTable.Columns.Add("Date", typeof(string));
                     transactionTable.Columns.Add("Time", typeof(string));
 
@@ -62,6 +63,7 @@ namespace InjectionMold_TrackingSystem.UserForms
                                 transaction.Location,
                                 transaction.ShotCount,
                                 transaction.Remarks,
+                                transaction.UserId,
                                 transaction.Date.ToString("MM/dd/yyyy"),
                                 transaction.Time
                             );

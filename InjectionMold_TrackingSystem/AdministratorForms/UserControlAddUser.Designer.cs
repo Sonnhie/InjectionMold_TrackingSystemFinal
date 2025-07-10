@@ -43,6 +43,7 @@
             this.SaveUser = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.autogenerateBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -68,6 +69,7 @@
             this.Password_Txt.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Password_Txt.Location = new System.Drawing.Point(158, 161);
             this.Password_Txt.Name = "Password_Txt";
+            this.Password_Txt.ReadOnly = true;
             this.Password_Txt.Size = new System.Drawing.Size(151, 23);
             this.Password_Txt.TabIndex = 3;
             // 
@@ -202,9 +204,20 @@
             this.label8.TabIndex = 33;
             this.label8.Text = "Add New User";
             // 
+            // autogenerateBtn
+            // 
+            this.autogenerateBtn.Location = new System.Drawing.Point(158, 190);
+            this.autogenerateBtn.Name = "autogenerateBtn";
+            this.autogenerateBtn.Size = new System.Drawing.Size(79, 42);
+            this.autogenerateBtn.TabIndex = 34;
+            this.autogenerateBtn.Text = "Generate Password";
+            this.autogenerateBtn.UseVisualStyleBackColor = true;
+            this.autogenerateBtn.Click += new System.EventHandler(this.autogenerateBtn_Click);
+            // 
             // UserControlAddUser
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.autogenerateBtn);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.SaveUser);
@@ -246,5 +259,6 @@
         private System.Windows.Forms.Button SaveUser;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button autogenerateBtn;
     }
 }

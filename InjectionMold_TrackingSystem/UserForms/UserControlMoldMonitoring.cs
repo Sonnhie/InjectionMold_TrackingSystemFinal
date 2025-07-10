@@ -73,8 +73,8 @@ namespace InjectionMold_TrackingSystem.UserForms
                 MessageBox.Show("Remarks cannot be empty. Please enter a remark.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (string.IsNullOrWhiteSpace(PartNumber_txt.Text) ||
-                string.IsNullOrWhiteSpace(MoldNumber_txt.Text) ||
+
+            if (string.IsNullOrWhiteSpace(MoldNumber_txt.Text) ||
                 string.IsNullOrWhiteSpace(DieNumber_txt.Text) || 
                 string.IsNullOrWhiteSpace(Customer_txt.Text) || 
                 string.IsNullOrWhiteSpace(Status_cmb.Text) || 
@@ -83,6 +83,7 @@ namespace InjectionMold_TrackingSystem.UserForms
                 MessageBox.Show("Please fill out all the fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             try
             {
                 TransactionData transaction = new TransactionData
@@ -112,6 +113,7 @@ namespace InjectionMold_TrackingSystem.UserForms
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
         private void OnQRCodeScanned(string qrData)
         {
             QRData ScannedData = new QRData(qrData);
@@ -151,7 +153,8 @@ namespace InjectionMold_TrackingSystem.UserForms
                     transactionTable.Columns.Add("Status", typeof(string));
                     transactionTable.Columns.Add("Location", typeof(string));
                     transactionTable.Columns.Add("Remarks", typeof(string));
-                    transactionTable.Columns.Add("Date", typeof(string));
+                    transactionTable.Columns.Add("In-charge", typeof(string));
+                    transactionTable.Columns.Add("Date", typeof(DateTime));
                     transactionTable.Columns.Add("Time", typeof(string));
 
                     foreach (var transaction in transactions)
@@ -165,6 +168,7 @@ namespace InjectionMold_TrackingSystem.UserForms
                                 transaction.Status,
                                 transaction.Location,
                                 transaction.Remarks,
+                                transaction.UserId,
                                 transaction.Date,
                                 transaction.Time
                             );
