@@ -287,7 +287,7 @@
             this.BtnShotCount.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.BtnShotCount.Size = new System.Drawing.Size(247, 40);
             this.BtnShotCount.TabIndex = 11;
-            this.BtnShotCount.Text = "        Mold Shot Count";
+            this.BtnShotCount.Text = "        Shot Count";
             this.BtnShotCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnShotCount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnShotCount.UseVisualStyleBackColor = true;

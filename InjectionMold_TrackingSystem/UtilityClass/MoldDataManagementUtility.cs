@@ -22,6 +22,17 @@ namespace InjectionMold_TrackingSystem.UtilityClass
         public string machineData { get; set; }
         public string MachineName { get; set; }
     }
+
+    public class ShotCountData
+    {
+        public int shotCount { get; set; }
+        public string partnumber { get; set; }
+        public string dienumber { get; set; }
+        public string customer { get; set; }
+        public string machine { get; set; }
+        public DateTime prod_date { get; set; }
+        public DateTime uploaded_at { get; set; } 
+    }
     public class MoldDataManagementUtility
     {
         private readonly DbConnection connection;
@@ -383,5 +394,146 @@ namespace InjectionMold_TrackingSystem.UtilityClass
             }
             return isRecord;
         }
+
+        public (bool isRecord, List<string> duplicates) SaveUploadedDatatoDatabase(DataTable data, Action<int> reportProgress)
+        {
+            List<string> duplicateMessage = new List<string>();
+            bool isRecord = false;
+
+            if (data == null || data.Rows.Count == 0)
+            {
+                throw new ArgumentException("No data provided.");
+            }
+
+            DateTime date = DateTime.Now;
+
+            try
+            {
+                int totalRows = data.Rows.Count;
+                int currentRow = 0;
+
+                foreach (DataRow row in data.Rows)
+                {
+
+
+
+                    string query = "INSERT INTO ShotCount_Table (partnumber, customer, dienumber, shot_count, prod_date, uploaded_at) " +
+                                   "VALUES (@partnumber, @customer, @dienumber, @shot_count, @prod_date, @uploaded_at)";
+                    string checkQuery = "select count(*) from ShotCount_Table where partnumber = @partnumber and dienumber = @dienumber and prod_date = @prod_date";
+
+                    string partNumber = row[1].ToString();
+                    string customer = row[2].ToString();
+                    string dieNumber = row[3].ToString();
+                    DateTime prodDate = Convert.ToDateTime(row[0]);
+
+                    using (SqlConnection con = connection.GetConnection())
+                    {
+                        con.Open();
+                        using (SqlCommand chkcmd = new SqlCommand(checkQuery, con))
+                        {
+                            chkcmd.Parameters.AddWithValue("@partnumber", partNumber);
+                            chkcmd.Parameters.AddWithValue("@dienumber", dieNumber);
+                            chkcmd.Parameters.AddWithValue("@prod_date", prodDate);
+
+                            int exist = (int)chkcmd.ExecuteScalar();
+                            if (exist > 0)
+                            {
+                                duplicateMessage.Add($"Duplicate Entry: {partNumber} | {dieNumber} | {prodDate}");
+                                continue;
+                            }
+                        }
+
+
+                        using (SqlCommand command = new SqlCommand(query, con))
+                        {
+                            command.Parameters.AddWithValue("@partnumber", row[1].ToString());
+                            command.Parameters.AddWithValue("@customer", row[2].ToString());
+                            command.Parameters.AddWithValue("@dienumber", row[3].ToString());
+                            command.Parameters.AddWithValue("@shot_count", row[4]);
+                            command.Parameters.AddWithValue("@prod_date", row[0]);
+                            command.Parameters.AddWithValue("@uploaded_at", date);
+
+                            int result = command.ExecuteNonQuery();
+                            if (result > 0)
+                                isRecord = true;
+                        }
+                    }
+
+                    // ✅ Update progress
+                    currentRow++;
+                    int progress = (int)((currentRow / (double)totalRows) * 100);
+                    reportProgress(progress);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
+            return (isRecord, duplicateMessage);
+        }
+
+        public DataTable GetShotCountDataToTable(string partNumber = null, DateTime? dateFrom = null, DateTime? dateTo = null)
+        {
+            DataTable dataTable = new DataTable();
+
+            string query = @"
+                SELECT 
+                    CONCAT(YEAR(prod_date), '-', RIGHT('0' + CAST(MONTH(prod_date) AS VARCHAR(2)), 2)) AS [Month],
+                    partnumber AS [Part Number],
+                    customer,
+                    dienumber AS [Die Number],
+                    SUM(shot_count) AS [Monthly Shot Count],
+                    SUM(SUM(shot_count)) OVER (
+                        PARTITION BY partnumber 
+                        ORDER BY YEAR(prod_date), MONTH(prod_date)
+                    ) AS [Accumulated Shot Count]
+                FROM ShotCount_Table
+                WHERE shot_count IS NOT NULL";
+
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            if (!string.IsNullOrEmpty(partNumber))
+            {
+                query += " AND partnumber LIKE @PartNumber";
+                parameters.Add(new SqlParameter("@PartNumber", "%" + partNumber + "%"));
+            }
+
+            if (dateFrom.HasValue)
+            {
+                query += " AND CAST(prod_date AS DATE) >= @DateFrom";
+                parameters.Add(new SqlParameter("@DateFrom", dateFrom.Value.Date));
+            }
+
+            if (dateTo.HasValue)
+            {
+                query += " AND CAST(prod_date AS DATE) <= @DateTo";
+                parameters.Add(new SqlParameter("@DateTo", dateTo.Value.Date));
+            }
+
+            query += @"
+                   GROUP BY 
+                YEAR(prod_date), 
+                MONTH(prod_date), 
+                partnumber, 
+                customer, 
+                dienumber
+            ORDER BY YEAR(prod_date), MONTH(prod_date)";
+
+            using (SqlConnection con = connection.GetConnection())
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddRange(parameters.ToArray());
+                con.Open();
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+
+            return dataTable;
+        }
+
     }
 }
